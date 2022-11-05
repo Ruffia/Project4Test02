@@ -1857,7 +1857,7 @@ END
 
 STRINGTABLE
 BEGIN
-    IDS_BUTTON_RussianTest  "HelloWorld"
+    IDS_BUTTON_RussianTest  "Print Control"
 END
 
 #endif    // Ó¢Óï(ÃÀ¹ú) resources
@@ -1870,8 +1870,6 @@ END
 //
 // Generated from the TEXTINCLUDE 3 resource.
 //
-//#include "version.h"
-//#include "language.rc2"
 
 /////////////////////////////////////////////////////////////////////////////
 #endif    // not APSTUDIO_INVOKED

@@ -98,16 +98,9 @@ BOOL CRussianUIDlg::OnInitDialog()
 	SetIcon(m_hIcon, TRUE);			// 设置大图标
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
-	// TODO: 在此添加额外的初始化代码
-	CWnd* pWnd = GetDlgItem(IDC_RADIO2);
-	CButton* pButton =  dynamic_cast<CButton*>(pWnd);
-	if (pButton)
-	{
-		pButton->SetCheck(TRUE);
-	}
-	
+	// TODO: 在此添加额外的初始化代码	
 	m_LanguageManagerCtrl.Init();
-	m_LanguageManagerCtrl.SetLanguageID( LANGID_RU_RU );
+	m_LanguageManagerCtrl.SetLanguageID( LANGID_ZH_CN );
 	CString str = m_LanguageManagerCtrl.GetResString(IDS_BUTTON_RussianTest);
 	GetDlgItem(IDC_BUTTON_RussianTest)->SetWindowText(str);
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
@@ -167,6 +160,7 @@ HCURSOR CRussianUIDlg::OnQueryDragIcon()
 void CRussianUIDlg::OnBnClickedRadioChinese()
 {
 	// TODO: 在此添加控件通知处理程序代码
+	m_LanguageManagerCtrl.Init();
 	m_LanguageManagerCtrl.SetLanguageID( LANGID_ZH_CN );
 	CString str = m_LanguageManagerCtrl.GetResString(IDS_BUTTON_RussianTest);
 	GetDlgItem(IDC_BUTTON_RussianTest)->SetWindowText(str);
@@ -176,7 +170,8 @@ void CRussianUIDlg::OnBnClickedRadioChinese()
 void CRussianUIDlg::OnBnClickedRadioEnglish()
 {
 	// TODO: 在此添加控件通知处理程序代码
-	m_LanguageManagerCtrl.SetLanguageID( LANGID_ZH_CN );
+	m_LanguageManagerCtrl.Init();
+	m_LanguageManagerCtrl.SetLanguageID( LANGID_EN_US );
 	CString str = m_LanguageManagerCtrl.GetResString(IDS_BUTTON_RussianTest);
 	GetDlgItem(IDC_BUTTON_RussianTest)->SetWindowText(str);
 }
@@ -185,6 +180,7 @@ void CRussianUIDlg::OnBnClickedRadioEnglish()
 void CRussianUIDlg::OnBnClickedRadioRussian()
 {
 	// TODO: 在此添加控件通知处理程序代码
+	m_LanguageManagerCtrl.Init();
 	m_LanguageManagerCtrl.SetLanguageID( LANGID_RU_RU );
 	CString str = m_LanguageManagerCtrl.GetResString(IDS_BUTTON_RussianTest);
 	GetDlgItem(IDC_BUTTON_RussianTest)->SetWindowText(str);
