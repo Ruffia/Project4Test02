@@ -1,0 +1,49 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: LanguageManager - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"..\..\Bin\SharedDebug\Language\Manager/LanguageManager.res" /d "_DEBUG" /d "_AFXDLL" "D:\SrcNow\SEM\New_International\Language\LanguageManager\LanguageManager.rc"" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP1D.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_AFXEXT" /Fp"..\..\Bin\SharedDebug\Language\Manager/LanguageManager.pch" /Yu"stdafx.h" /Fo"..\..\Bin\SharedDebug\Language\Manager/" /Fd"..\..\Bin\SharedDebug\Language\Manager/" /FD /GZ /c 
+"D:\SrcNow\SEM\New_International\Language\LanguageManager\LanguageManager.cpp"
+"D:\SrcNow\SEM\New_International\Language\LanguageManager\LanguageManagerCtrl.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP1D.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP1E.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_AFXEXT" /Fp"..\..\Bin\SharedDebug\Language\Manager/LanguageManager.pch" /Yc"stdafx.h" /Fo"..\..\Bin\SharedDebug\Language\Manager/" /Fd"..\..\Bin\SharedDebug\Language\Manager/" /FD /GZ /c 
+"D:\SrcNow\SEM\New_International\Language\LanguageManager\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP1E.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP1F.tmp" with contents
+[
+/nologo /subsystem:windows /dll /incremental:yes /pdb:"..\..\Bin/LanguageManager.pdb" /debug /machine:I386 /def:".\LanguageManager.def" /out:"..\..\Bin/LanguageManager.dll" /implib:"..\..\Bin/LanguageManager.lib" /pdbtype:sept 
+\SrcNow\SEM\New_International\Bin\SharedDebug\Language\Manager\LanguageManager.obj
+\SrcNow\SEM\New_International\Bin\SharedDebug\Language\Manager\LanguageManagerCtrl.obj
+\SrcNow\SEM\New_International\Bin\SharedDebug\Language\Manager\StdAfx.obj
+\SrcNow\SEM\New_International\Bin\SharedDebug\Language\Manager\LanguageManager.res
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP1F.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+LanguageManager.cpp
+LanguageManagerCtrl.cpp
+Generating Code...
+Linking...
+   Creating library ..\..\Bin/LanguageManager.lib and object ..\..\Bin/LanguageManager.exp
+
+
+
+<h3>Results</h3>
+LanguageManager.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: en_US - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"..\..\..\Bin\SharedDebug\Language\en_US/en_US.res" /d "_DEBUG" /d "_AFXDLL" "D:\SrcNow\SEM\New_International\Language\LanguagePackage\en_US\en_US.rc"" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP8B.tmp" with contents
+[
+/nologo /subsystem:windows /dll /incremental:yes /pdb:"..\..\..\Bin\Language/en_US.pdb" /debug /machine:I386 /def:".\en_US.def" /out:"..\..\..\Bin\Language/en_US.dll" /implib:"..\..\..\Bin\Language/en_US.lib" /pdbtype:sept 
+\SrcNow\SEM\New_International\Bin\SharedDebug\Language\en_US\en_US.obj
+\SrcNow\SEM\New_International\Bin\SharedDebug\Language\en_US\StdAfx.obj
+\SrcNow\SEM\New_International\Bin\SharedDebug\Language\en_US\en_US.res
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP8B.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Linking...
+
+
+
+<h3>Results</h3>
+en_US.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
