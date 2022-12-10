@@ -12,7 +12,6 @@
 #define IDC_TAB                         1000
 #define IDC_PAGE_HOLDER                 1001
 #define IDC_FIXEDCK                     1002
-#define IDC_MULTIHIGHLIGHTCK            1006
 #define IDC_DRAGCOPYCK                  1009
 #define IDC_LIST1                       1013
 #define IDC_RTLYCK                      1013

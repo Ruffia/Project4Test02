@@ -24,7 +24,6 @@ public:
 	enum { IDD = IDD_CUSTOMTABCTRL_DIALOG };
 	CButton	m_btnDragcopy;
 	CButton	m_btnFixed;
-	CButton	m_btnMultihighlight;
 	CStatic	m_stPlaceHolder;
 	CCustomTabCtrl	m_ctrlTab;
 	//}}AFX_DATA
