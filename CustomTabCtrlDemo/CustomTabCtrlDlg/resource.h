@@ -13,10 +13,8 @@
 #define IDC_PAGE_HOLDER                 1001
 #define IDC_FIXEDCK                     1002
 #define IDC_FOURBUTTONSCK               1003
-#define IDC_AUTOHIDEBUTTONSCK           1004
 #define IDC_TOOLTIPSCK                  1005
 #define IDC_MULTIHIGHLIGHTCK            1006
-#define IDC_EDITLABELSCK                1007
 #define IDC_DRAGMOVECK                  1008
 #define IDC_DRAGCOPYCK                  1009
 #define IDC_RADIO1                      1010

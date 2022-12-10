@@ -27,7 +27,6 @@ public:
 	CButton	m_btnDragmove;
 	CButton	m_btnDragcopy;
 	CButton	m_btn4Buttons;
-	CButton	m_btnAutoHide;
 	CButton	m_btnFixed;
 	CButton	m_btnTooltips;
 	CButton	m_btnMultihighlight;

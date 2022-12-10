@@ -78,7 +78,6 @@ void CCustomTabCtrlDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_DRAGMOVECK, m_btnDragmove);
 	DDX_Control(pDX, IDC_DRAGCOPYCK, m_btnDragcopy);
 	DDX_Control(pDX, IDC_FOURBUTTONSCK, m_btn4Buttons);
-	DDX_Control(pDX, IDC_AUTOHIDEBUTTONSCK, m_btnAutoHide);
 	DDX_Control(pDX, IDC_FIXEDCK, m_btnFixed);
 	DDX_Control(pDX, IDC_TOOLTIPSCK, m_btnTooltips);
 	DDX_Control(pDX, IDC_MULTIHIGHLIGHTCK, m_btnMultihighlight);
@@ -97,7 +96,6 @@ BEGIN_MESSAGE_MAP(CCustomTabCtrlDlg, CDialog)
 	ON_BN_CLICKED(IDC_RADIO1, OnRadio1)
 	ON_BN_CLICKED(IDC_RADIO2, OnRadio2)
 	ON_BN_CLICKED(IDC_FOURBUTTONSCK, OnFourbuttonsck)
-	ON_BN_CLICKED(IDC_AUTOHIDEBUTTONSCK, OnAutohidebuttonsck)
 	ON_BN_CLICKED(IDC_MULTIHIGHLIGHTCK, OnMultihighlightck)
 	ON_BN_CLICKED(IDC_TOOLTIPSCK, OnTooltipsck)
 	ON_WM_CONTEXTMENU()
@@ -160,9 +158,6 @@ BOOL CCustomTabCtrlDlg::OnInitDialog()
 	if(m_ctrlTab.GetStyle()&CTCS_FOURBUTTONS)
 		m_btn4Buttons.SetCheck(TRUE);
 
-	if(m_ctrlTab.GetStyle()&CTCS_AUTOHIDEBUTTONS)
-		m_btnAutoHide.SetCheck(TRUE);
-
 	if(m_ctrlTab.GetStyle()&CTCS_CLOSEBUTTON)
 		m_btnClose.SetCheck(TRUE);
 
@@ -185,6 +180,8 @@ BOOL CCustomTabCtrlDlg::OnInitDialog()
 	m_ctrlTab.SetCurSel(0);
 	
 	m_ctrlTab.ModifyStyle(0,CTCS_EDITLABELS,0);
+	m_ctrlTab.ModifyStyle(0,CTCS_AUTOHIDEBUTTONS,0);
+
 	//if(m_ctrlTab.GetStyle()&CTCS_TOOLTIPS)
 	//{
 	//	m_btnTooltips.SetCheck(TRUE);	
@@ -322,7 +319,6 @@ void CCustomTabCtrlDlg::_Resize(int cx, int cy)
 
 	m_btnFixed.MoveWindow(cx-m-rBn.Width(),m,rBn.Width(),rBn.Height());
 	m_btn4Buttons.MoveWindow(cx-m-rBn.Width(),3*m,rBn.Width(),rBn.Height());
-	m_btnAutoHide.MoveWindow(cx-m-rBn.Width(),5*m,rBn.Width(),rBn.Height());
 	m_btnClose.MoveWindow(cx-m-rBn.Width(),7*m,rBn.Width(),rBn.Height());
 	m_btnTooltips.MoveWindow(cx-m-rBn.Width(),9*m,rBn.Width(),rBn.Height());
 	m_btnMultihighlight.MoveWindow(cx-m-rBn.Width(),11*m,rBn.Width(),rBn.Height());
@@ -576,14 +572,6 @@ void CCustomTabCtrlDlg::OnFourbuttonsck()
 		m_ctrlTab.ModifyStyle(0,CTCS_FOURBUTTONS,0);
 	else
 		m_ctrlTab.ModifyStyle(CTCS_FOURBUTTONS,0,0);
-}
-
-void CCustomTabCtrlDlg::OnAutohidebuttonsck()
-{
-	if(m_btnAutoHide.GetCheck())
-		m_ctrlTab.ModifyStyle(0,CTCS_AUTOHIDEBUTTONS,0);
-	else
-		m_ctrlTab.ModifyStyle(CTCS_AUTOHIDEBUTTONS,0,0);
 }
 
 void CCustomTabCtrlDlg::OnMultihighlightck() 
