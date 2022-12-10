@@ -24,7 +24,6 @@ public:
 	enum { IDD = IDD_CUSTOMTABCTRL_DIALOG };
 	CButton	m_btnDragcopy;
 	CButton	m_btnFixed;
-	CButton	m_btnTooltips;
 	CButton	m_btnMultihighlight;
 	CStatic	m_stPlaceHolder;
 	CCustomTabCtrl	m_ctrlTab;
@@ -52,7 +51,6 @@ protected:
 	afx_msg void OnRadio2();
 	afx_msg void OnAutohidebuttonsck();
 	afx_msg void OnMultihighlightck();
-	afx_msg void OnTooltipsck();
 	afx_msg void OnContextMenu(CWnd* pWnd, CPoint point);
 	afx_msg void OnDragcopyck();
 	afx_msg void OnRadio3();

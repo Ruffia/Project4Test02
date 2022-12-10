@@ -75,7 +75,6 @@ void CCustomTabCtrlDlg::DoDataExchange(CDataExchange* pDX)
 	//{{AFX_DATA_MAP(CCustomTabCtrlDlg)
 	DDX_Control(pDX, IDC_DRAGCOPYCK, m_btnDragcopy);
 	DDX_Control(pDX, IDC_FIXEDCK, m_btnFixed);
-	DDX_Control(pDX, IDC_TOOLTIPSCK, m_btnTooltips);
 	DDX_Control(pDX, IDC_MULTIHIGHLIGHTCK, m_btnMultihighlight);
 	DDX_Control(pDX, IDC_PAGE_HOLDER, m_stPlaceHolder);
 	DDX_Control(pDX, IDC_TAB, m_ctrlTab);
@@ -92,7 +91,6 @@ BEGIN_MESSAGE_MAP(CCustomTabCtrlDlg, CDialog)
 	ON_BN_CLICKED(IDC_RADIO1, OnRadio1)
 	ON_BN_CLICKED(IDC_RADIO2, OnRadio2)
 	ON_BN_CLICKED(IDC_MULTIHIGHLIGHTCK, OnMultihighlightck)
-	ON_BN_CLICKED(IDC_TOOLTIPSCK, OnTooltipsck)
 	ON_WM_CONTEXTMENU()
 	ON_BN_CLICKED(IDC_DRAGCOPYCK, OnDragcopyck)
 	ON_BN_CLICKED(IDC_RADIO3, OnRadio3)
@@ -166,21 +164,6 @@ BOOL CCustomTabCtrlDlg::OnInitDialog()
 	m_ctrlTab.ModifyStyle(0,CTCS_AUTOHIDEBUTTONS,0);
 	m_ctrlTab.ModifyStyle(0,CTCS_DRAGMOVE,0);
 	m_ctrlTab.ModifyStyle(0,CTCS_CLOSEBUTTON,0);
-
-	//if(m_ctrlTab.GetStyle()&CTCS_TOOLTIPS)
-	//{
-	//	m_btnTooltips.SetCheck(TRUE);	
-
-	//	if(m_ctrlTab.GetStyle()&CTCS_CLOSEBUTTON)
-	//		m_ctrlTab.SetItemTooltipText(CTCID_CLOSEBUTTON,"Close");
-	//	m_ctrlTab.SetItemTooltipText(CTCID_FIRSTBUTTON,"First");
-	//	m_ctrlTab.SetItemTooltipText(CTCID_PREVBUTTON,"Prev");
-	//	m_ctrlTab.SetItemTooltipText(CTCID_NEXTBUTTON,"Next");
-	//	m_ctrlTab.SetItemTooltipText(CTCID_LASTBUTTON,"Last");
-	//	m_ctrlTab.SetItemTooltipText(0,"Press to fill the static window background with the color used to draw window frames.");
-	//	m_ctrlTab.SetItemTooltipText(1,"Press to fill the static window background with the color used to fill the screen background.");
-	//	m_ctrlTab.SetItemTooltipText(2,"Press to fill the static window background with the color used to fill the the window background.");
-	//}
 
 	CRect r;
 	GetClientRect(r);
@@ -303,7 +286,6 @@ void CCustomTabCtrlDlg::_Resize(int cx, int cy)
 	m_ctrlTab.MoveWindow(nTabPosition[Left],nTabPosition[Top],nTabPosition[Width],nTabPosition[Height]);
 
 	m_btnFixed.MoveWindow(cx-m-rBn.Width(),m,rBn.Width(),rBn.Height());
-	m_btnTooltips.MoveWindow(cx-m-rBn.Width(),9*m,rBn.Width(),rBn.Height());
 	m_btnMultihighlight.MoveWindow(cx-m-rBn.Width(),11*m,rBn.Width(),rBn.Height());
 	m_btnDragcopy.MoveWindow(cx-m-rBn.Width(),17*m,rBn.Width(),rBn.Height());
 	GetDlgItem(IDC_RADIO3)->MoveWindow(cx-m-rBn.Width(),23*m,rBn.Width(),rBn.Height());
@@ -553,30 +535,6 @@ void CCustomTabCtrlDlg::OnMultihighlightck()
 		m_ctrlTab.ModifyStyle(0,CTCS_MULTIHIGHLIGHT,0);
 	else
 		m_ctrlTab.ModifyStyle(CTCS_MULTIHIGHLIGHT,0,0);	
-}
-
-void CCustomTabCtrlDlg::OnTooltipsck()
-{
-	if(m_btnTooltips.GetCheck())
-	{
-		m_ctrlTab.ModifyStyle(0,CTCS_TOOLTIPS,0);
-		m_ctrlTab.SetItemTooltipText(CTCID_CLOSEBUTTON,"Close");
-		m_ctrlTab.SetItemTooltipText(CTCID_FIRSTBUTTON,"First");
-		m_ctrlTab.SetItemTooltipText(CTCID_PREVBUTTON,"Prev");
-		m_ctrlTab.SetItemTooltipText(CTCID_NEXTBUTTON,"Next");
-		m_ctrlTab.SetItemTooltipText(CTCID_LASTBUTTON,"Last");
-		LPCTSTR p;
-		for(int i=0;i<m_ctrlTab.GetItemCount();i++)
-		{
-			DWORD dwData;
-			m_ctrlTab.GetItemData(i,dwData);
-			p = GetTooltipText(dwData);
-			if(p)
-				m_ctrlTab.SetItemTooltipText(i,p);
-		}
-	}
-	else
-		m_ctrlTab.ModifyStyle(CTCS_TOOLTIPS,0,0);
 }
 
 
