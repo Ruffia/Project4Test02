@@ -74,7 +74,6 @@ void CCustomTabCtrlDlg::DoDataExchange(CDataExchange* pDX)
 	CDialog::DoDataExchange(pDX);
 	//{{AFX_DATA_MAP(CCustomTabCtrlDlg)
 	DDX_Control(pDX, IDC_CLOSEBUTTONSCK, m_btnClose);
-	DDX_Control(pDX, IDC_DRAGMOVECK, m_btnDragmove);
 	DDX_Control(pDX, IDC_DRAGCOPYCK, m_btnDragcopy);
 	DDX_Control(pDX, IDC_FOURBUTTONSCK, m_btn4Buttons);
 	DDX_Control(pDX, IDC_FIXEDCK, m_btnFixed);
@@ -98,7 +97,6 @@ BEGIN_MESSAGE_MAP(CCustomTabCtrlDlg, CDialog)
 	ON_BN_CLICKED(IDC_MULTIHIGHLIGHTCK, OnMultihighlightck)
 	ON_BN_CLICKED(IDC_TOOLTIPSCK, OnTooltipsck)
 	ON_WM_CONTEXTMENU()
-	ON_BN_CLICKED(IDC_DRAGMOVECK, OnDragmoveck)
 	ON_BN_CLICKED(IDC_DRAGCOPYCK, OnDragcopyck)
 	ON_BN_CLICKED(IDC_CLOSEBUTTONSCK, OnClosebuttonsck)
 	ON_BN_CLICKED(IDC_RADIO3, OnRadio3)
@@ -162,9 +160,6 @@ BOOL CCustomTabCtrlDlg::OnInitDialog()
 	if(m_ctrlTab.GetStyle()&CTCS_MULTIHIGHLIGHT)
 		m_btnMultihighlight.SetCheck(TRUE);
 
-	if(m_ctrlTab.GetStyle()&CTCS_DRAGMOVE)
-		m_btnDragmove.SetCheck(TRUE);
-
 	if(m_ctrlTab.GetStyle()&CTCS_DRAGCOPY)
 		m_btnDragcopy.SetCheck(TRUE);
 
@@ -179,6 +174,7 @@ BOOL CCustomTabCtrlDlg::OnInitDialog()
 	
 	m_ctrlTab.ModifyStyle(0,CTCS_EDITLABELS,0);
 	m_ctrlTab.ModifyStyle(0,CTCS_AUTOHIDEBUTTONS,0);
+	m_ctrlTab.ModifyStyle(0,CTCS_DRAGMOVE,0);
 
 	//if(m_ctrlTab.GetStyle()&CTCS_TOOLTIPS)
 	//{
@@ -320,7 +316,6 @@ void CCustomTabCtrlDlg::_Resize(int cx, int cy)
 	m_btnClose.MoveWindow(cx-m-rBn.Width(),7*m,rBn.Width(),rBn.Height());
 	m_btnTooltips.MoveWindow(cx-m-rBn.Width(),9*m,rBn.Width(),rBn.Height());
 	m_btnMultihighlight.MoveWindow(cx-m-rBn.Width(),11*m,rBn.Width(),rBn.Height());
-	m_btnDragmove.MoveWindow(cx-m-rBn.Width(),15*m,rBn.Width(),rBn.Height());
 	m_btnDragcopy.MoveWindow(cx-m-rBn.Width(),17*m,rBn.Width(),rBn.Height());
 	GetDlgItem(IDC_RADIO3)->MoveWindow(cx-m-rBn.Width(),23*m,rBn.Width(),rBn.Height());
 	GetDlgItem(IDC_RADIO4)->MoveWindow(cx-m-rBn.Width(),25*m,rBn.Width(),rBn.Height());
@@ -603,14 +598,6 @@ void CCustomTabCtrlDlg::OnTooltipsck()
 		m_ctrlTab.ModifyStyle(CTCS_TOOLTIPS,0,0);
 }
 
-
-void CCustomTabCtrlDlg::OnDragmoveck() 
-{
-	if(m_btnDragmove.GetCheck())
-		m_ctrlTab.ModifyStyle(0,CTCS_DRAGMOVE,0);
-	else
-		m_ctrlTab.ModifyStyle(CTCS_DRAGMOVE,0,0);		
-}
 
 void CCustomTabCtrlDlg::OnDragcopyck() 
 {

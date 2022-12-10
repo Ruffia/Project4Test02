@@ -23,7 +23,6 @@ public:
 	//{{AFX_DATA(CCustomTabCtrlDlg)
 	enum { IDD = IDD_CUSTOMTABCTRL_DIALOG };
 	CButton	m_btnClose;
-	CButton	m_btnDragmove;
 	CButton	m_btnDragcopy;
 	CButton	m_btn4Buttons;
 	CButton	m_btnFixed;

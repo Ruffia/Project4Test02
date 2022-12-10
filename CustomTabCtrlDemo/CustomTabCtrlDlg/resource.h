@@ -15,7 +15,6 @@
 #define IDC_FOURBUTTONSCK               1003
 #define IDC_TOOLTIPSCK                  1005
 #define IDC_MULTIHIGHLIGHTCK            1006
-#define IDC_DRAGMOVECK                  1008
 #define IDC_DRAGCOPYCK                  1009
 #define IDC_RADIO1                      1010
 #define IDC_RADIO2                      1011
