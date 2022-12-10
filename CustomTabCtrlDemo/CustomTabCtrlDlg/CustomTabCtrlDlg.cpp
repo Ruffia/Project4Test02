@@ -287,12 +287,12 @@ void CCustomTabCtrlDlg::_Resize(int cx, int cy)
 	m_ctrlTab.MoveWindow(nTabPosition[Left],nTabPosition[Top],nTabPosition[Width],nTabPosition[Height]);
 
 	m_btnFixed.MoveWindow(cx-m-rBn.Width(),m,rBn.Width(),rBn.Height());
-	m_btnMultihighlight.MoveWindow(cx-m-rBn.Width(),11*m,rBn.Width(),rBn.Height());
-	m_btnDragcopy.MoveWindow(cx-m-rBn.Width(),17*m,rBn.Width(),rBn.Height());
-	GetDlgItem(IDC_RADIO3)->MoveWindow(cx-m-rBn.Width(),23*m,rBn.Width(),rBn.Height());
-	GetDlgItem(IDC_RADIO4)->MoveWindow(cx-m-rBn.Width(),25*m,rBn.Width(),rBn.Height());
-	GetDlgItem(IDC_RADIO5)->MoveWindow(cx-m-rBn.Width(),27*m,rBn.Width(),rBn.Height());
-	GetDlgItem(IDC_RADIO6)->MoveWindow(cx-m-rBn.Width(),29*m,rBn.Width(),rBn.Height());
+	m_btnMultihighlight.MoveWindow(cx-m-rBn.Width(),3*m,rBn.Width(),rBn.Height());
+	m_btnDragcopy.MoveWindow(cx-m-rBn.Width(),5*m,rBn.Width(),rBn.Height());
+	GetDlgItem(IDC_RADIO3)->MoveWindow(cx-m-rBn.Width(),9*m,rBn.Width(),rBn.Height());
+	GetDlgItem(IDC_RADIO4)->MoveWindow(cx-m-rBn.Width(),11*m,rBn.Width(),rBn.Height());
+	GetDlgItem(IDC_RADIO5)->MoveWindow(cx-m-rBn.Width(),13*m,rBn.Width(),rBn.Height());
+	GetDlgItem(IDC_RADIO6)->MoveWindow(cx-m-rBn.Width(),15*m,rBn.Width(),rBn.Height());
 	RedrawWindow(NULL,NULL,RDW_ALLCHILDREN|RDW_ERASE|RDW_INVALIDATE);
 }
 
