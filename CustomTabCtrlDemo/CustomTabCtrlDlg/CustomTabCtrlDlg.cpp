@@ -73,7 +73,6 @@ void CCustomTabCtrlDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
 	//{{AFX_DATA_MAP(CCustomTabCtrlDlg)
-	DDX_Control(pDX, IDC_BUTTONSAFTERCK, m_btnButtonsAfter);
 	DDX_Control(pDX, IDC_CLOSEBUTTONSCK, m_btnClose);
 	DDX_Control(pDX, IDC_DRAGMOVECK, m_btnDragmove);
 	DDX_Control(pDX, IDC_DRAGCOPYCK, m_btnDragcopy);
@@ -102,7 +101,6 @@ BEGIN_MESSAGE_MAP(CCustomTabCtrlDlg, CDialog)
 	ON_BN_CLICKED(IDC_DRAGMOVECK, OnDragmoveck)
 	ON_BN_CLICKED(IDC_DRAGCOPYCK, OnDragcopyck)
 	ON_BN_CLICKED(IDC_CLOSEBUTTONSCK, OnClosebuttonsck)
-	ON_BN_CLICKED(IDC_BUTTONSAFTERCK, OnButtonsafterck)
 	ON_BN_CLICKED(IDC_RADIO3, OnRadio3)
 	ON_BN_CLICKED(IDC_RADIO4, OnRadio4)
 	ON_BN_CLICKED(IDC_RADIO5, OnRadio5)
@@ -324,7 +322,6 @@ void CCustomTabCtrlDlg::_Resize(int cx, int cy)
 	m_btnMultihighlight.MoveWindow(cx-m-rBn.Width(),11*m,rBn.Width(),rBn.Height());
 	m_btnDragmove.MoveWindow(cx-m-rBn.Width(),15*m,rBn.Width(),rBn.Height());
 	m_btnDragcopy.MoveWindow(cx-m-rBn.Width(),17*m,rBn.Width(),rBn.Height());
-	m_btnButtonsAfter.MoveWindow(cx-m-rBn.Width(),21*m,rBn.Width(),rBn.Height());
 	GetDlgItem(IDC_RADIO3)->MoveWindow(cx-m-rBn.Width(),23*m,rBn.Width(),rBn.Height());
 	GetDlgItem(IDC_RADIO4)->MoveWindow(cx-m-rBn.Width(),25*m,rBn.Width(),rBn.Height());
 	GetDlgItem(IDC_RADIO5)->MoveWindow(cx-m-rBn.Width(),27*m,rBn.Width(),rBn.Height());
@@ -665,14 +662,6 @@ void CCustomTabCtrlDlg::OnClosebuttonsck()
 		m_ctrlTab.ModifyStyle(0,CTCS_CLOSEBUTTON,0);
 	else
 		m_ctrlTab.ModifyStyle(CTCS_CLOSEBUTTON,0,0);	
-}
-
-void CCustomTabCtrlDlg::OnButtonsafterck() 
-{
-	if(m_btnButtonsAfter.GetCheck())
-		m_ctrlTab.ModifyStyle(0,CTCS_BUTTONSAFTER);
-	else
-		m_ctrlTab.ModifyStyle(CTCS_BUTTONSAFTER,0);	
 }
 
 void CCustomTabCtrlDlg::OnRadio3() 

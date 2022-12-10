@@ -23,7 +23,6 @@
 #define IDC_LIST1                       1013
 #define IDC_RTLYCK                      1013
 #define IDC_CLOSEBUTTONSCK2             1014
-#define IDC_BUTTONSAFTERCK              1014
 #define IDC_TOPCK                       1015
 #define IDC_RADIO3                      1015
 #define IDC_RADIO4                      1016
