@@ -73,17 +73,17 @@ void CCustomTabCtrlDemoDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
 	//{{AFX_DATA_MAP(CCustomTabCtrlDemoDlg)
-	DDX_Control(pDX, IDC_BUTTONSAFTERCK, m_ctrlButtonsAfter);
-	DDX_Control(pDX, IDC_RTLYCK, m_ctrlRTL);
-	DDX_Control(pDX, IDC_CLOSEBUTTONSCK, m_ctrlClose);
-	DDX_Control(pDX, IDC_DRAGMOVECK, m_ctrlDragmove);
-	DDX_Control(pDX, IDC_DRAGCOPYCK, m_ctrlDragcopy);
-	DDX_Control(pDX, IDC_FOURBUTTONSCK, m_ctrl4Buttons);
-	DDX_Control(pDX, IDC_AUTOHIDEBUTTONSCK, m_ctrlAutoHide);
-	DDX_Control(pDX, IDC_FIXEDCK, m_ctrlFixed);
-	DDX_Control(pDX, IDC_TOOLTIPSCK, m_ctrlTooltips);
-	DDX_Control(pDX, IDC_MULTIHIGHLIGHTCK, m_ctrlMultihighlight);
-	DDX_Control(pDX, IDC_EDITLABELSCK, m_ctrlEditlabels);
+	DDX_Control(pDX, IDC_BUTTONSAFTERCK, m_btnButtonsAfter);
+	DDX_Control(pDX, IDC_RTLYCK, m_btnRTL);
+	DDX_Control(pDX, IDC_CLOSEBUTTONSCK, m_btnClose);
+	DDX_Control(pDX, IDC_DRAGMOVECK, m_btnDragmove);
+	DDX_Control(pDX, IDC_DRAGCOPYCK, m_btnDragcopy);
+	DDX_Control(pDX, IDC_FOURBUTTONSCK, m_btn4Buttons);
+	DDX_Control(pDX, IDC_AUTOHIDEBUTTONSCK, m_btnAutoHide);
+	DDX_Control(pDX, IDC_FIXEDCK, m_btnFixed);
+	DDX_Control(pDX, IDC_TOOLTIPSCK, m_btnTooltips);
+	DDX_Control(pDX, IDC_MULTIHIGHLIGHTCK, m_btnMultihighlight);
+	DDX_Control(pDX, IDC_EDITLABELSCK, m_btnEditlabels);
 	DDX_Control(pDX, IDC_COLOR, m_ctrlColor);
 	DDX_Control(pDX, IDC_TAB, m_ctrlTab);
 	//}}AFX_DATA_MAP
@@ -159,23 +159,23 @@ BOOL CCustomTabCtrlDemoDlg::OnInitDialog()
 	CheckRadioButton(IDC_RADIO3,IDC_RADIO6,IDC_RADIO3);
 	
 	if(m_ctrlTab.GetStyle()&CTCS_FIXEDWIDTH)
-		m_ctrlFixed.SetCheck(TRUE);	
+		m_btnFixed.SetCheck(TRUE);	
 	if(m_ctrlTab.GetStyle()&CTCS_FOURBUTTONS)
-		m_ctrl4Buttons.SetCheck(TRUE);	
+		m_btn4Buttons.SetCheck(TRUE);	
 	if(m_ctrlTab.GetStyle()&CTCS_AUTOHIDEBUTTONS)
-		m_ctrlAutoHide.SetCheck(TRUE);	
+		m_btnAutoHide.SetCheck(TRUE);	
 	if(m_ctrlTab.GetStyle()&CTCS_CLOSEBUTTON)
-		m_ctrlClose.SetCheck(TRUE);		
+		m_btnClose.SetCheck(TRUE);		
 	if(m_ctrlTab.GetStyle()&CTCS_MULTIHIGHLIGHT)
-		m_ctrlMultihighlight.SetCheck(TRUE);	
+		m_btnMultihighlight.SetCheck(TRUE);	
 	if(m_ctrlTab.GetStyle()&CTCS_EDITLABELS)
-		m_ctrlEditlabels.SetCheck(TRUE);	
+		m_btnEditlabels.SetCheck(TRUE);	
 	if(m_ctrlTab.GetStyle()&CTCS_DRAGMOVE)
-		m_ctrlDragmove.SetCheck(TRUE);
+		m_btnDragmove.SetCheck(TRUE);
 	if(m_ctrlTab.GetStyle()&CTCS_DRAGCOPY)
-		m_ctrlDragcopy.SetCheck(TRUE);
+		m_btnDragcopy.SetCheck(TRUE);
 	if(m_ctrlTab.GetExStyle()&WS_EX_LAYOUTRTL)
-		m_ctrlRTL.SetCheck(TRUE);
+		m_btnRTL.SetCheck(TRUE);
 
 	m_ctrlTab.SetDragCursors(AfxGetApp()->LoadCursor(IDC_CURSORMOVE),AfxGetApp()->LoadCursor(IDC_CURSORCOPY));
 	m_ctrlTab.InsertItem(0,"SS_BLACKRECT");
@@ -188,7 +188,7 @@ BOOL CCustomTabCtrlDemoDlg::OnInitDialog()
 	
 	if(m_ctrlTab.GetStyle()&CTCS_TOOLTIPS)
 	{
-		m_ctrlTooltips.SetCheck(TRUE);	
+		m_btnTooltips.SetCheck(TRUE);	
 
 		if(m_ctrlTab.GetStyle()&CTCS_CLOSEBUTTON)
 			m_ctrlTab.SetItemTooltipText(CTCID_CLOSEBUTTON,"Close");
@@ -260,53 +260,52 @@ void CCustomTabCtrlDemoDlg::OnSize(UINT nType, int cx, int cy)
 
 void CCustomTabCtrlDemoDlg::Size(int cx, int cy)
 {
-	if(m_ctrlTab.m_hWnd)
+	if(!m_ctrlTab.m_hWnd) return;
+
+	int m = 10;
+	int h = 20;
+	CRect rBn;
+	m_btnFixed.GetWindowRect(rBn);
+
+	if(m_ctrlTab.IsVertical() && m_ctrlTab.GetStyle()&CTCS_TOP) // left
 	{
-		int m = 10;
-		int h = 20;
-		CRect rBn;
-		m_ctrlFixed.GetWindowRect(rBn);
-
-		if(m_ctrlTab.IsVertical() && m_ctrlTab.GetStyle()&CTCS_TOP) // left
-		{
-			m_ctrlColor.MoveWindow(m+h,m,cx-3*m-rBn.Width()-h,cy-2*m);
-			m_ctrlTab.MoveWindow(m,m,h,cy-2*m);
-		}
-		else if(m_ctrlTab.GetStyle()&CTCS_TOP) // top
-		{
-			m_ctrlColor.MoveWindow(m,h+m,cx-3*m-rBn.Width(),cy-h-2*m);
-			m_ctrlTab.MoveWindow(m,m,cx-3*m-rBn.Width(),h);
-		}
-		else if(m_ctrlTab.IsVertical()) // right
-		{
-			m_ctrlColor.MoveWindow(m,m,cx-3*m-rBn.Width()-h,cy-2*m);
-			m_ctrlTab.MoveWindow(m+cx-3*m-rBn.Width()-h,m,h,cy-2*m);
-		}
-		else // bottom
-		{
-			m_ctrlColor.MoveWindow(m,m,cx-3*m-rBn.Width(),cy-h-2*m);
-			m_ctrlTab.MoveWindow(m,cy-h-m,cx-3*m-rBn.Width(),h);
-		}
-
-		m_ctrlFixed.MoveWindow(cx-m-rBn.Width(),m,rBn.Width(),rBn.Height());
-		m_ctrl4Buttons.MoveWindow(cx-m-rBn.Width(),3*m,rBn.Width(),rBn.Height());
-		m_ctrlAutoHide.MoveWindow(cx-m-rBn.Width(),5*m,rBn.Width(),rBn.Height());
-		m_ctrlClose.MoveWindow(cx-m-rBn.Width(),7*m,rBn.Width(),rBn.Height());
-		m_ctrlTooltips.MoveWindow(cx-m-rBn.Width(),9*m,rBn.Width(),rBn.Height());
-		m_ctrlMultihighlight.MoveWindow(cx-m-rBn.Width(),11*m,rBn.Width(),rBn.Height());
-		m_ctrlEditlabels.MoveWindow(cx-m-rBn.Width(),13*m,rBn.Width(),rBn.Height());
-		m_ctrlDragmove.MoveWindow(cx-m-rBn.Width(),15*m,rBn.Width(),rBn.Height());
-		m_ctrlDragcopy.MoveWindow(cx-m-rBn.Width(),17*m,rBn.Width(),rBn.Height());
-		m_ctrlRTL.MoveWindow(cx-m-rBn.Width(),19*m,rBn.Width(),rBn.Height());
-		m_ctrlButtonsAfter.MoveWindow(cx-m-rBn.Width(),21*m,rBn.Width(),rBn.Height());
-		GetDlgItem(IDC_RADIO3)->MoveWindow(cx-m-rBn.Width(),23*m,rBn.Width(),rBn.Height());
-		GetDlgItem(IDC_RADIO4)->MoveWindow(cx-m-rBn.Width(),25*m,rBn.Width(),rBn.Height());
-		GetDlgItem(IDC_RADIO5)->MoveWindow(cx-m-rBn.Width(),27*m,rBn.Width(),rBn.Height());
-		GetDlgItem(IDC_RADIO6)->MoveWindow(cx-m-rBn.Width(),29*m,rBn.Width(),rBn.Height());
-		GetDlgItem(IDC_RADIO1)->MoveWindow(cx-m-rBn.Width(),31*m,rBn.Width(),rBn.Height());
-		GetDlgItem(IDC_RADIO2)->MoveWindow(cx-m-rBn.Width(),33*m,rBn.Width(),rBn.Height());
-		RedrawWindow(NULL,NULL,RDW_ALLCHILDREN|RDW_ERASE|RDW_INVALIDATE);
+		m_ctrlColor.MoveWindow(m+h,m,cx-3*m-rBn.Width()-h,cy-2*m);
+		m_ctrlTab.MoveWindow(m,m,h,cy-2*m);
 	}
+	else if(m_ctrlTab.GetStyle()&CTCS_TOP) // top
+	{
+		m_ctrlColor.MoveWindow(m,h+m,cx-3*m-rBn.Width(),cy-h-2*m);
+		m_ctrlTab.MoveWindow(m,m,cx-3*m-rBn.Width(),h);
+	}
+	else if(m_ctrlTab.IsVertical()) // right
+	{
+		m_ctrlColor.MoveWindow(m,m,cx-3*m-rBn.Width()-h,cy-2*m);
+		m_ctrlTab.MoveWindow(m+cx-3*m-rBn.Width()-h,m,h,cy-2*m);
+	}
+	else // bottom
+	{
+		m_ctrlColor.MoveWindow(m,m,cx-3*m-rBn.Width(),cy-h-2*m);
+		m_ctrlTab.MoveWindow(m,cy-h-m,cx-3*m-rBn.Width(),h);
+	}
+
+	m_btnFixed.MoveWindow(cx-m-rBn.Width(),m,rBn.Width(),rBn.Height());
+	m_btn4Buttons.MoveWindow(cx-m-rBn.Width(),3*m,rBn.Width(),rBn.Height());
+	m_btnAutoHide.MoveWindow(cx-m-rBn.Width(),5*m,rBn.Width(),rBn.Height());
+	m_btnClose.MoveWindow(cx-m-rBn.Width(),7*m,rBn.Width(),rBn.Height());
+	m_btnTooltips.MoveWindow(cx-m-rBn.Width(),9*m,rBn.Width(),rBn.Height());
+	m_btnMultihighlight.MoveWindow(cx-m-rBn.Width(),11*m,rBn.Width(),rBn.Height());
+	m_btnEditlabels.MoveWindow(cx-m-rBn.Width(),13*m,rBn.Width(),rBn.Height());
+	m_btnDragmove.MoveWindow(cx-m-rBn.Width(),15*m,rBn.Width(),rBn.Height());
+	m_btnDragcopy.MoveWindow(cx-m-rBn.Width(),17*m,rBn.Width(),rBn.Height());
+	m_btnRTL.MoveWindow(cx-m-rBn.Width(),19*m,rBn.Width(),rBn.Height());
+	m_btnButtonsAfter.MoveWindow(cx-m-rBn.Width(),21*m,rBn.Width(),rBn.Height());
+	GetDlgItem(IDC_RADIO3)->MoveWindow(cx-m-rBn.Width(),23*m,rBn.Width(),rBn.Height());
+	GetDlgItem(IDC_RADIO4)->MoveWindow(cx-m-rBn.Width(),25*m,rBn.Width(),rBn.Height());
+	GetDlgItem(IDC_RADIO5)->MoveWindow(cx-m-rBn.Width(),27*m,rBn.Width(),rBn.Height());
+	GetDlgItem(IDC_RADIO6)->MoveWindow(cx-m-rBn.Width(),29*m,rBn.Width(),rBn.Height());
+	GetDlgItem(IDC_RADIO1)->MoveWindow(cx-m-rBn.Width(),31*m,rBn.Width(),rBn.Height());
+	GetDlgItem(IDC_RADIO2)->MoveWindow(cx-m-rBn.Width(),33*m,rBn.Width(),rBn.Height());
+	RedrawWindow(NULL,NULL,RDW_ALLCHILDREN|RDW_ERASE|RDW_INVALIDATE);
 }
 
 void CCustomTabCtrlDemoDlg::OnSelchangeTab(NMHDR* pNMHDR, LRESULT* pResult) 
@@ -535,7 +534,7 @@ void CCustomTabCtrlDemoDlg::OnLabelupdateTab(NMHDR* pNMHDR, LRESULT* pResult)
 
 void CCustomTabCtrlDemoDlg::OnFixedck() 
 {
-	if(m_ctrlFixed.GetCheck())
+	if(m_btnFixed.GetCheck())
 		m_ctrlTab.ModifyStyle(0,CTCS_FIXEDWIDTH,0);
 	else
 		m_ctrlTab.ModifyStyle(CTCS_FIXEDWIDTH,0,0);
@@ -543,7 +542,7 @@ void CCustomTabCtrlDemoDlg::OnFixedck()
 
 void CCustomTabCtrlDemoDlg::OnFourbuttonsck() 
 {
-	if(m_ctrl4Buttons.GetCheck())
+	if(m_btn4Buttons.GetCheck())
 		m_ctrlTab.ModifyStyle(0,CTCS_FOURBUTTONS,0);
 	else
 		m_ctrlTab.ModifyStyle(CTCS_FOURBUTTONS,0,0);
@@ -551,7 +550,7 @@ void CCustomTabCtrlDemoDlg::OnFourbuttonsck()
 
 void CCustomTabCtrlDemoDlg::OnAutohidebuttonsck()
 {
-	if(m_ctrlAutoHide.GetCheck())
+	if(m_btnAutoHide.GetCheck())
 		m_ctrlTab.ModifyStyle(0,CTCS_AUTOHIDEBUTTONS,0);
 	else
 		m_ctrlTab.ModifyStyle(CTCS_AUTOHIDEBUTTONS,0,0);
@@ -559,7 +558,7 @@ void CCustomTabCtrlDemoDlg::OnAutohidebuttonsck()
 
 void CCustomTabCtrlDemoDlg::OnMultihighlightck() 
 {
-	if(m_ctrlMultihighlight.GetCheck())
+	if(m_btnMultihighlight.GetCheck())
 		m_ctrlTab.ModifyStyle(0,CTCS_MULTIHIGHLIGHT,0);
 	else
 		m_ctrlTab.ModifyStyle(CTCS_MULTIHIGHLIGHT,0,0);	
@@ -567,7 +566,7 @@ void CCustomTabCtrlDemoDlg::OnMultihighlightck()
 
 void CCustomTabCtrlDemoDlg::OnTooltipsck()
 {
-	if(m_ctrlTooltips.GetCheck())
+	if(m_btnTooltips.GetCheck())
 	{
 		m_ctrlTab.ModifyStyle(0,CTCS_TOOLTIPS,0);
 		m_ctrlTab.SetItemTooltipText(CTCID_CLOSEBUTTON,"Close");
@@ -591,7 +590,7 @@ void CCustomTabCtrlDemoDlg::OnTooltipsck()
 
 void CCustomTabCtrlDemoDlg::OnEditlabelsck() 
 {
-	if(m_ctrlEditlabels.GetCheck())
+	if(m_btnEditlabels.GetCheck())
 		m_ctrlTab.ModifyStyle(0,CTCS_EDITLABELS,0);
 	else
 		m_ctrlTab.ModifyStyle(CTCS_EDITLABELS,0,0);	
@@ -599,7 +598,7 @@ void CCustomTabCtrlDemoDlg::OnEditlabelsck()
 
 void CCustomTabCtrlDemoDlg::OnDragmoveck() 
 {
-	if(m_ctrlDragmove.GetCheck())
+	if(m_btnDragmove.GetCheck())
 		m_ctrlTab.ModifyStyle(0,CTCS_DRAGMOVE,0);
 	else
 		m_ctrlTab.ModifyStyle(CTCS_DRAGMOVE,0,0);		
@@ -607,7 +606,7 @@ void CCustomTabCtrlDemoDlg::OnDragmoveck()
 
 void CCustomTabCtrlDemoDlg::OnDragcopyck() 
 {
-	if(m_ctrlDragcopy.GetCheck())
+	if(m_btnDragcopy.GetCheck())
 		m_ctrlTab.ModifyStyle(0,CTCS_DRAGCOPY,0);
 	else
 		m_ctrlTab.ModifyStyle(CTCS_DRAGCOPY,0,0);		
@@ -651,7 +650,7 @@ LPCTSTR CCustomTabCtrlDemoDlg::GetTooltipText(int nStyle)
 
 void CCustomTabCtrlDemoDlg::OnClosebuttonsck() 
 {
-	if(m_ctrlClose.GetCheck())
+	if(m_btnClose.GetCheck())
 		m_ctrlTab.ModifyStyle(0,CTCS_CLOSEBUTTON,0);
 	else
 		m_ctrlTab.ModifyStyle(CTCS_CLOSEBUTTON,0,0);	
@@ -659,7 +658,7 @@ void CCustomTabCtrlDemoDlg::OnClosebuttonsck()
 
 void CCustomTabCtrlDemoDlg::OnRtlyck() 
 {
-	if(m_ctrlRTL.GetCheck())
+	if(m_btnRTL.GetCheck())
 	{
 		ModifyStyleEx(0,WS_EX_LAYOUTRTL);
 		m_ctrlTab.ModifyStyleEx(0,WS_EX_LAYOUTRTL);
@@ -672,12 +671,12 @@ void CCustomTabCtrlDemoDlg::OnRtlyck()
 	CRect r;
 	GetClientRect(r);
 	Size(r.Width(),r.Height());
-	m_ctrlFixed.Invalidate();
+	m_btnFixed.Invalidate();
 }
 
 void CCustomTabCtrlDemoDlg::OnButtonsafterck() 
 {
-	if(m_ctrlButtonsAfter.GetCheck())
+	if(m_btnButtonsAfter.GetCheck())
 		m_ctrlTab.ModifyStyle(0,CTCS_BUTTONSAFTER);
 	else
 		m_ctrlTab.ModifyStyle(CTCS_BUTTONSAFTER,0);	

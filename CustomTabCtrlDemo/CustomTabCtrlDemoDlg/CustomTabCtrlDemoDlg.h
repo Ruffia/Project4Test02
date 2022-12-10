@@ -22,17 +22,17 @@ public:
 // Dialog Data
 	//{{AFX_DATA(CCustomTabCtrlDemoDlg)
 	enum { IDD = IDD_CUSTOMTABCTRLDEMO_DIALOG };
-	CButton	m_ctrlButtonsAfter;
-	CButton	m_ctrlRTL;
-	CButton	m_ctrlClose;
-	CButton	m_ctrlDragmove;
-	CButton	m_ctrlDragcopy;
-	CButton	m_ctrl4Buttons;
-	CButton	m_ctrlAutoHide;
-	CButton	m_ctrlFixed;
-	CButton	m_ctrlTooltips;
-	CButton	m_ctrlMultihighlight;
-	CButton	m_ctrlEditlabels;
+	CButton	m_btnButtonsAfter;
+	CButton	m_btnRTL;
+	CButton	m_btnClose;
+	CButton	m_btnDragmove;
+	CButton	m_btnDragcopy;
+	CButton	m_btn4Buttons;
+	CButton	m_btnAutoHide;
+	CButton	m_btnFixed;
+	CButton	m_btnTooltips;
+	CButton	m_btnMultihighlight;
+	CButton	m_btnEditlabels;
 	CStatic	m_ctrlColor;
 	CCustomTabCtrl	m_ctrlTab;
 	//}}AFX_DATA
