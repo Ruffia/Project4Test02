@@ -73,7 +73,6 @@ void CCustomTabCtrlDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
 	//{{AFX_DATA_MAP(CCustomTabCtrlDlg)
-	DDX_Control(pDX, IDC_CLOSEBUTTONSCK, m_btnClose);
 	DDX_Control(pDX, IDC_DRAGCOPYCK, m_btnDragcopy);
 	DDX_Control(pDX, IDC_FOURBUTTONSCK, m_btn4Buttons);
 	DDX_Control(pDX, IDC_FIXEDCK, m_btnFixed);
@@ -98,7 +97,6 @@ BEGIN_MESSAGE_MAP(CCustomTabCtrlDlg, CDialog)
 	ON_BN_CLICKED(IDC_TOOLTIPSCK, OnTooltipsck)
 	ON_WM_CONTEXTMENU()
 	ON_BN_CLICKED(IDC_DRAGCOPYCK, OnDragcopyck)
-	ON_BN_CLICKED(IDC_CLOSEBUTTONSCK, OnClosebuttonsck)
 	ON_BN_CLICKED(IDC_RADIO3, OnRadio3)
 	ON_BN_CLICKED(IDC_RADIO4, OnRadio4)
 	ON_BN_CLICKED(IDC_RADIO5, OnRadio5)
@@ -154,9 +152,6 @@ BOOL CCustomTabCtrlDlg::OnInitDialog()
 	if(m_ctrlTab.GetStyle()&CTCS_FOURBUTTONS)
 		m_btn4Buttons.SetCheck(TRUE);
 
-	if(m_ctrlTab.GetStyle()&CTCS_CLOSEBUTTON)
-		m_btnClose.SetCheck(TRUE);
-
 	if(m_ctrlTab.GetStyle()&CTCS_MULTIHIGHLIGHT)
 		m_btnMultihighlight.SetCheck(TRUE);
 
@@ -175,6 +170,7 @@ BOOL CCustomTabCtrlDlg::OnInitDialog()
 	m_ctrlTab.ModifyStyle(0,CTCS_EDITLABELS,0);
 	m_ctrlTab.ModifyStyle(0,CTCS_AUTOHIDEBUTTONS,0);
 	m_ctrlTab.ModifyStyle(0,CTCS_DRAGMOVE,0);
+	m_ctrlTab.ModifyStyle(0,CTCS_CLOSEBUTTON,0);
 
 	//if(m_ctrlTab.GetStyle()&CTCS_TOOLTIPS)
 	//{
@@ -313,7 +309,6 @@ void CCustomTabCtrlDlg::_Resize(int cx, int cy)
 
 	m_btnFixed.MoveWindow(cx-m-rBn.Width(),m,rBn.Width(),rBn.Height());
 	m_btn4Buttons.MoveWindow(cx-m-rBn.Width(),3*m,rBn.Width(),rBn.Height());
-	m_btnClose.MoveWindow(cx-m-rBn.Width(),7*m,rBn.Width(),rBn.Height());
 	m_btnTooltips.MoveWindow(cx-m-rBn.Width(),9*m,rBn.Width(),rBn.Height());
 	m_btnMultihighlight.MoveWindow(cx-m-rBn.Width(),11*m,rBn.Width(),rBn.Height());
 	m_btnDragcopy.MoveWindow(cx-m-rBn.Width(),17*m,rBn.Width(),rBn.Height());
@@ -641,14 +636,6 @@ LPCTSTR CCustomTabCtrlDlg::GetTooltipText(int nStyle)
 		return s[2];
 	}
 	return NULL;
-}
-
-void CCustomTabCtrlDlg::OnClosebuttonsck() 
-{
-	if(m_btnClose.GetCheck())
-		m_ctrlTab.ModifyStyle(0,CTCS_CLOSEBUTTON,0);
-	else
-		m_ctrlTab.ModifyStyle(CTCS_CLOSEBUTTON,0,0);	
 }
 
 void CCustomTabCtrlDlg::OnRadio3() 

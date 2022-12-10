@@ -18,7 +18,6 @@
 #define IDC_DRAGCOPYCK                  1009
 #define IDC_RADIO1                      1010
 #define IDC_RADIO2                      1011
-#define IDC_CLOSEBUTTONSCK              1012
 #define IDC_LIST1                       1013
 #define IDC_RTLYCK                      1013
 #define IDC_CLOSEBUTTONSCK2             1014

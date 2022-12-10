@@ -22,7 +22,6 @@ public:
 // Dialog Data
 	//{{AFX_DATA(CCustomTabCtrlDlg)
 	enum { IDD = IDD_CUSTOMTABCTRL_DIALOG };
-	CButton	m_btnClose;
 	CButton	m_btnDragcopy;
 	CButton	m_btn4Buttons;
 	CButton	m_btnFixed;
@@ -57,9 +56,7 @@ protected:
 	afx_msg void OnMultihighlightck();
 	afx_msg void OnTooltipsck();
 	afx_msg void OnContextMenu(CWnd* pWnd, CPoint point);
-	afx_msg void OnDragmoveck();
 	afx_msg void OnDragcopyck();
-	afx_msg void OnClosebuttonsck();
 	afx_msg void OnRadio3();
 	afx_msg void OnRadio4();
 	afx_msg void OnRadio5();
