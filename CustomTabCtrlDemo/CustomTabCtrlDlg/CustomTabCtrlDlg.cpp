@@ -74,7 +74,6 @@ void CCustomTabCtrlDlg::DoDataExchange(CDataExchange* pDX)
 	CDialog::DoDataExchange(pDX);
 	//{{AFX_DATA_MAP(CCustomTabCtrlDlg)
 	DDX_Control(pDX, IDC_DRAGCOPYCK, m_btnDragcopy);
-	DDX_Control(pDX, IDC_FOURBUTTONSCK, m_btn4Buttons);
 	DDX_Control(pDX, IDC_FIXEDCK, m_btnFixed);
 	DDX_Control(pDX, IDC_TOOLTIPSCK, m_btnTooltips);
 	DDX_Control(pDX, IDC_MULTIHIGHLIGHTCK, m_btnMultihighlight);
@@ -92,7 +91,6 @@ BEGIN_MESSAGE_MAP(CCustomTabCtrlDlg, CDialog)
 	ON_BN_CLICKED(IDC_FIXEDCK, OnFixedck)
 	ON_BN_CLICKED(IDC_RADIO1, OnRadio1)
 	ON_BN_CLICKED(IDC_RADIO2, OnRadio2)
-	ON_BN_CLICKED(IDC_FOURBUTTONSCK, OnFourbuttonsck)
 	ON_BN_CLICKED(IDC_MULTIHIGHLIGHTCK, OnMultihighlightck)
 	ON_BN_CLICKED(IDC_TOOLTIPSCK, OnTooltipsck)
 	ON_WM_CONTEXTMENU()
@@ -148,9 +146,6 @@ BOOL CCustomTabCtrlDlg::OnInitDialog()
 	
 	if(m_ctrlTab.GetStyle()&CTCS_FIXEDWIDTH)
 		m_btnFixed.SetCheck(TRUE);	
-
-	if(m_ctrlTab.GetStyle()&CTCS_FOURBUTTONS)
-		m_btn4Buttons.SetCheck(TRUE);
 
 	if(m_ctrlTab.GetStyle()&CTCS_MULTIHIGHLIGHT)
 		m_btnMultihighlight.SetCheck(TRUE);
@@ -308,7 +303,6 @@ void CCustomTabCtrlDlg::_Resize(int cx, int cy)
 	m_ctrlTab.MoveWindow(nTabPosition[Left],nTabPosition[Top],nTabPosition[Width],nTabPosition[Height]);
 
 	m_btnFixed.MoveWindow(cx-m-rBn.Width(),m,rBn.Width(),rBn.Height());
-	m_btn4Buttons.MoveWindow(cx-m-rBn.Width(),3*m,rBn.Width(),rBn.Height());
 	m_btnTooltips.MoveWindow(cx-m-rBn.Width(),9*m,rBn.Width(),rBn.Height());
 	m_btnMultihighlight.MoveWindow(cx-m-rBn.Width(),11*m,rBn.Width(),rBn.Height());
 	m_btnDragcopy.MoveWindow(cx-m-rBn.Width(),17*m,rBn.Width(),rBn.Height());
@@ -551,14 +545,6 @@ void CCustomTabCtrlDlg::OnFixedck()
 		m_ctrlTab.ModifyStyle(0,CTCS_FIXEDWIDTH,0);
 	else
 		m_ctrlTab.ModifyStyle(CTCS_FIXEDWIDTH,0,0);
-}
-
-void CCustomTabCtrlDlg::OnFourbuttonsck() 
-{
-	if(m_btn4Buttons.GetCheck())
-		m_ctrlTab.ModifyStyle(0,CTCS_FOURBUTTONS,0);
-	else
-		m_ctrlTab.ModifyStyle(CTCS_FOURBUTTONS,0,0);
 }
 
 void CCustomTabCtrlDlg::OnMultihighlightck() 
