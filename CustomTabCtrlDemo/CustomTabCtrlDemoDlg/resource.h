@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
-// Microsoft Developer Studio generated include file.
-// Used by CustomTabCtrlDemoDlg.rc
+// Microsoft Visual C++ 生成的包含文件。
+// 供 CustomTabCtrlDemoDlg.rc 使用
 //
 #define IDM_ABOUTBOX                    0x0010
 #define IDD_ABOUTBOX                    100
@@ -10,7 +10,7 @@
 #define IDC_CURSORMOVE                  133
 #define IDC_CURSORCOPY                  134
 #define IDC_TAB                         1000
-#define IDC_COLOR                       1001
+#define IDC_PAGE_HOLDER                 1001
 #define IDC_FIXEDCK                     1002
 #define IDC_FOURBUTTONSCK               1003
 #define IDC_AUTOHIDEBUTTONSCK           1004

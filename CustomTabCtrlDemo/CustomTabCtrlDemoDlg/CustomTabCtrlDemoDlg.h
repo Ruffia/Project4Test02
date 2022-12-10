@@ -33,7 +33,7 @@ public:
 	CButton	m_btnTooltips;
 	CButton	m_btnMultihighlight;
 	CButton	m_btnEditlabels;
-	CStatic	m_ctrlColor;
+	CStatic	m_stPlaceHolder;
 	CCustomTabCtrl	m_ctrlTab;
 	//}}AFX_DATA
 
@@ -84,7 +84,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 
 private:
-	void Size(int cx, int cy);
+	void _Resize(int cx, int cy);
 	LPCTSTR GetTooltipText(int nStyle);
 };
 
