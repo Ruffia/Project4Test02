@@ -267,26 +267,59 @@ void CCustomTabCtrlDemoDlg::Size(int cx, int cy)
 	CRect rBn;
 	m_btnFixed.GetWindowRect(rBn);
 
+	int nHolderPosition[Four] = {0}; 
+	int nTabPosition[Four] = {0};
 	if(m_ctrlTab.IsVertical() && m_ctrlTab.GetStyle()&CTCS_TOP) // left
 	{
-		m_ctrlColor.MoveWindow(m+h,m,cx-3*m-rBn.Width()-h,cy-2*m);
-		m_ctrlTab.MoveWindow(m,m,h,cy-2*m);
+		nHolderPosition[Left] = m+h;
+		nHolderPosition[Top] = m;
+		nHolderPosition[Width] = cx-3*m-rBn.Width()-h;
+		nHolderPosition[Height] = cy-2*m;
+
+		nTabPosition[Left] = m;
+		nTabPosition[Top] = m;
+		nTabPosition[Width] = h;
+		nTabPosition[Height] = cy-2*m;	
 	}
 	else if(m_ctrlTab.GetStyle()&CTCS_TOP) // top
 	{
-		m_ctrlColor.MoveWindow(m,h+m,cx-3*m-rBn.Width(),cy-h-2*m);
-		m_ctrlTab.MoveWindow(m,m,cx-3*m-rBn.Width(),h);
+		nHolderPosition[Left] = m;
+		nHolderPosition[Top] = h+m;
+		nHolderPosition[Width] = cx-3*m-rBn.Width();
+		nHolderPosition[Height] = cy-h-2*m;
+
+		nTabPosition[Left] = m;
+		nTabPosition[Top] = m;
+		nTabPosition[Width] = cx-3*m-rBn.Width();
+		nTabPosition[Height] = h;	
 	}
 	else if(m_ctrlTab.IsVertical()) // right
 	{
-		m_ctrlColor.MoveWindow(m,m,cx-3*m-rBn.Width()-h,cy-2*m);
-		m_ctrlTab.MoveWindow(m+cx-3*m-rBn.Width()-h,m,h,cy-2*m);
+		nHolderPosition[Left] = m;
+		nHolderPosition[Top] = m;
+		nHolderPosition[Width] = cx-3*m-rBn.Width()-h;
+		nHolderPosition[Height] = cy-2*m;
+
+		nTabPosition[Left] = m+cx-3*m-rBn.Width()-h;
+		nTabPosition[Top] = m;
+		nTabPosition[Width] = h;
+		nTabPosition[Height] = cy-2*m;	
 	}
 	else // bottom
 	{
-		m_ctrlColor.MoveWindow(m,m,cx-3*m-rBn.Width(),cy-h-2*m);
-		m_ctrlTab.MoveWindow(m,cy-h-m,cx-3*m-rBn.Width(),h);
+		nHolderPosition[Left] = m;
+		nHolderPosition[Top] = m;
+		nHolderPosition[Width] = cx-3*m-rBn.Width();
+		nHolderPosition[Height] = cy-h-2*m;
+		
+		nTabPosition[Left] = m;
+		nTabPosition[Top] = cy-h-m;
+		nTabPosition[Width] = cx-3*m-rBn.Width();
+		nTabPosition[Height] = h;		
 	}
+
+	m_ctrlColor.MoveWindow(nHolderPosition[Left],nHolderPosition[Top],nHolderPosition[Width],nHolderPosition[Height]);
+	m_ctrlTab.MoveWindow(nTabPosition[Left],nTabPosition[Top],nTabPosition[Width],nTabPosition[Height]);
 
 	m_btnFixed.MoveWindow(cx-m-rBn.Width(),m,rBn.Width(),rBn.Height());
 	m_btn4Buttons.MoveWindow(cx-m-rBn.Width(),3*m,rBn.Width(),rBn.Height());
