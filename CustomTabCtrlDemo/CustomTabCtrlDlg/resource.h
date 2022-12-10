@@ -14,8 +14,6 @@
 #define IDC_FIXEDCK                     1002
 #define IDC_MULTIHIGHLIGHTCK            1006
 #define IDC_DRAGCOPYCK                  1009
-#define IDC_RADIO1                      1010
-#define IDC_RADIO2                      1011
 #define IDC_LIST1                       1013
 #define IDC_RTLYCK                      1013
 #define IDC_CLOSEBUTTONSCK2             1014

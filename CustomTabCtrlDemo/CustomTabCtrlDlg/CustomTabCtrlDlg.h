@@ -47,8 +47,6 @@ protected:
 	afx_msg HCURSOR OnQueryDragIcon();
 	afx_msg void OnSize(UINT nType, int cx, int cy);
 	afx_msg void OnFixedck();
-	afx_msg void OnRadio1();
-	afx_msg void OnRadio2();
 	afx_msg void OnAutohidebuttonsck();
 	afx_msg void OnMultihighlightck();
 	afx_msg void OnContextMenu(CWnd* pWnd, CPoint point);

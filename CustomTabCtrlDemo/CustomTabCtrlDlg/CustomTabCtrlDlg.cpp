@@ -88,8 +88,6 @@ BEGIN_MESSAGE_MAP(CCustomTabCtrlDlg, CDialog)
 	ON_WM_QUERYDRAGICON()
 	ON_WM_SIZE()
 	ON_BN_CLICKED(IDC_FIXEDCK, OnFixedck)
-	ON_BN_CLICKED(IDC_RADIO1, OnRadio1)
-	ON_BN_CLICKED(IDC_RADIO2, OnRadio2)
 	ON_BN_CLICKED(IDC_MULTIHIGHLIGHTCK, OnMultihighlightck)
 	ON_WM_CONTEXTMENU()
 	ON_BN_CLICKED(IDC_DRAGCOPYCK, OnDragcopyck)
@@ -139,9 +137,6 @@ BOOL CCustomTabCtrlDlg::OnInitDialog()
 	
 	// TODO: Add extra initialization here
 	
-	CheckRadioButton(IDC_RADIO1,IDC_RADIO2,IDC_RADIO1);
-	CheckRadioButton(IDC_RADIO3,IDC_RADIO6,IDC_RADIO3);
-	
 	if(m_ctrlTab.GetStyle()&CTCS_FIXEDWIDTH)
 		m_btnFixed.SetCheck(TRUE);	
 
@@ -164,6 +159,12 @@ BOOL CCustomTabCtrlDlg::OnInitDialog()
 	m_ctrlTab.ModifyStyle(0,CTCS_AUTOHIDEBUTTONS,0);
 	m_ctrlTab.ModifyStyle(0,CTCS_DRAGMOVE,0);
 	m_ctrlTab.ModifyStyle(0,CTCS_CLOSEBUTTON,0);
+
+	LOGFONT lf = {15, 0, 0, 0, FW_NORMAL, 0, 0, 0,
+		DEFAULT_CHARSET, OUT_CHARACTER_PRECIS, CLIP_CHARACTER_PRECIS,
+		DEFAULT_QUALITY, DEFAULT_PITCH | FF_DONTCARE, "Courier"};
+
+	m_ctrlTab.SetControlFont(lf, TRUE);
 
 	CRect r;
 	GetClientRect(r);
@@ -292,8 +293,6 @@ void CCustomTabCtrlDlg::_Resize(int cx, int cy)
 	GetDlgItem(IDC_RADIO4)->MoveWindow(cx-m-rBn.Width(),25*m,rBn.Width(),rBn.Height());
 	GetDlgItem(IDC_RADIO5)->MoveWindow(cx-m-rBn.Width(),27*m,rBn.Width(),rBn.Height());
 	GetDlgItem(IDC_RADIO6)->MoveWindow(cx-m-rBn.Width(),29*m,rBn.Width(),rBn.Height());
-	GetDlgItem(IDC_RADIO1)->MoveWindow(cx-m-rBn.Width(),31*m,rBn.Width(),rBn.Height());
-	GetDlgItem(IDC_RADIO2)->MoveWindow(cx-m-rBn.Width(),33*m,rBn.Width(),rBn.Height());
 	RedrawWindow(NULL,NULL,RDW_ALLCHILDREN|RDW_ERASE|RDW_INVALIDATE);
 }
 
@@ -544,21 +543,6 @@ void CCustomTabCtrlDlg::OnDragcopyck()
 		m_ctrlTab.ModifyStyle(0,CTCS_DRAGCOPY,0);
 	else
 		m_ctrlTab.ModifyStyle(CTCS_DRAGCOPY,0,0);		
-}
-
-void CCustomTabCtrlDlg::OnRadio1() 
-{
-	// Default font
-	m_ctrlTab.SetControlFont(m_ctrlTab.GetDefaultFont(), TRUE);
-}
-
-void CCustomTabCtrlDlg::OnRadio2() 
-{	
-	LOGFONT lf = {15, 0, 0, 0, FW_NORMAL, 0, 0, 0,
-			DEFAULT_CHARSET, OUT_CHARACTER_PRECIS, CLIP_CHARACTER_PRECIS,
-			DEFAULT_QUALITY, DEFAULT_PITCH | FF_DONTCARE, "Courier"};
-
-	m_ctrlTab.SetControlFont(lf, TRUE);
 }
 
 void CCustomTabCtrlDlg::OnContextMenu(CWnd* /*pWnd*/, CPoint /*point*/) 
