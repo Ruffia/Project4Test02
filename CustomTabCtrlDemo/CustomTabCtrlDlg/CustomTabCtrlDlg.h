@@ -31,7 +31,6 @@ public:
 	CButton	m_btnFixed;
 	CButton	m_btnTooltips;
 	CButton	m_btnMultihighlight;
-	CButton	m_btnEditlabels;
 	CStatic	m_stPlaceHolder;
 	CCustomTabCtrl	m_ctrlTab;
 	//}}AFX_DATA
@@ -60,7 +59,6 @@ protected:
 	afx_msg void OnAutohidebuttonsck();
 	afx_msg void OnMultihighlightck();
 	afx_msg void OnTooltipsck();
-	afx_msg void OnEditlabelsck();
 	afx_msg void OnContextMenu(CWnd* pWnd, CPoint point);
 	afx_msg void OnDragmoveck();
 	afx_msg void OnDragcopyck();
