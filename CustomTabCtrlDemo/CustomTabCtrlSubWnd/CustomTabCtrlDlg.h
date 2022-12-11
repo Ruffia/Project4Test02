@@ -34,16 +34,10 @@ public:
 
 // Implementation
 protected:
-	HICON m_hIcon;
-
 	// Generated message map functions
 	//{{AFX_MSG(CCustomTabCtrlDlg)
 	virtual BOOL OnInitDialog();
-	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
-	afx_msg void OnPaint();
-	afx_msg HCURSOR OnQueryDragIcon();
 	afx_msg void OnSize(UINT nType, int cx, int cy);
-	afx_msg void OnContextMenu(CWnd* pWnd, CPoint point);
 	//}}AFX_MSG
 	// Notify messages from CCustomTabCtrl
 	afx_msg void OnLButtonClickedTab(NMHDR* pNMHDR, LRESULT* pResult) ;
