@@ -85,10 +85,6 @@ BEGIN_MESSAGE_MAP(CCustomTabCtrlDlg, CDialog)
 	ON_WM_QUERYDRAGICON()
 	ON_WM_SIZE()
 	ON_WM_CONTEXTMENU()
-	ON_BN_CLICKED(IDC_RADIO3, OnRadio3)
-	ON_BN_CLICKED(IDC_RADIO4, OnRadio4)
-	ON_BN_CLICKED(IDC_RADIO5, OnRadio5)
-	ON_BN_CLICKED(IDC_RADIO6, OnRadio6)
 	//}}AFX_MSG_MAP
 	ON_NOTIFY(CTCN_CLICK, IDC_TAB, OnLButtonClickedTab)
 	ON_NOTIFY(CTCN_RCLICK, IDC_TAB, OnRButtonClickedTab)
@@ -144,6 +140,7 @@ BOOL CCustomTabCtrlDlg::OnInitDialog()
 	m_ctrlTab.ModifyStyle(0,CTCS_CLOSEBUTTON,0);
 	m_ctrlTab.ModifyStyle(0,CTCS_MULTIHIGHLIGHT,0);
 	m_ctrlTab.ModifyStyle(0,CTCS_DRAGCOPY,0);
+	m_ctrlTab.ModifyStyle(CTCS_RIGHT,CTCS_TOP,0);
 
 	LOGFONT lf = {15, 0, 0, 0, FW_NORMAL, 0, 0, 0,
 		DEFAULT_CHARSET, OUT_CHARACTER_PRECIS, CLIP_CHARACTER_PRECIS,
@@ -270,10 +267,6 @@ void CCustomTabCtrlDlg::_Resize(int cx, int cy)
 	m_stPlaceHolder.MoveWindow(nHolderPosition[Left],nHolderPosition[Top],nHolderPosition[Width],nHolderPosition[Height]);
 	m_ctrlTab.MoveWindow(nTabPosition[Left],nTabPosition[Top],nTabPosition[Width],nTabPosition[Height]);
 
-	GetDlgItem(IDC_RADIO3)->MoveWindow(cx-m-rBn.Width(),9*m,rBn.Width(),rBn.Height());
-	GetDlgItem(IDC_RADIO4)->MoveWindow(cx-m-rBn.Width(),11*m,rBn.Width(),rBn.Height());
-	GetDlgItem(IDC_RADIO5)->MoveWindow(cx-m-rBn.Width(),13*m,rBn.Width(),rBn.Height());
-	GetDlgItem(IDC_RADIO6)->MoveWindow(cx-m-rBn.Width(),15*m,rBn.Width(),rBn.Height());
 	RedrawWindow(NULL,NULL,RDW_ALLCHILDREN|RDW_ERASE|RDW_INVALIDATE);
 }
 
@@ -521,36 +514,4 @@ LPCTSTR CCustomTabCtrlDlg::GetTooltipText(int nStyle)
 		return s[2];
 	}
 	return NULL;
-}
-
-void CCustomTabCtrlDlg::OnRadio3() 
-{
-	m_ctrlTab.ModifyStyle(CTCS_LEFT,0,0);
-	CRect r;
-	GetClientRect(r);
-	_Resize(r.Width(),r.Height());	
-}
-
-void CCustomTabCtrlDlg::OnRadio4() 
-{
-	m_ctrlTab.ModifyStyle(CTCS_RIGHT,CTCS_TOP,0);
-	CRect r;
-	GetClientRect(r);
-	_Resize(r.Width(),r.Height());		
-}
-
-void CCustomTabCtrlDlg::OnRadio5() 
-{
-	m_ctrlTab.ModifyStyle(0,CTCS_LEFT,0);
-	CRect r;
-	GetClientRect(r);
-	_Resize(r.Width(),r.Height());			
-}
-
-void CCustomTabCtrlDlg::OnRadio6() 
-{
-	m_ctrlTab.ModifyStyle(CTCS_TOP,CTCS_RIGHT,0);
-	CRect r;
-	GetClientRect(r);
-	_Resize(r.Width(),r.Height());		
 }
