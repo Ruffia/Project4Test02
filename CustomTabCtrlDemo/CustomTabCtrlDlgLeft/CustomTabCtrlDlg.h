@@ -44,10 +44,6 @@ protected:
 	afx_msg HCURSOR OnQueryDragIcon();
 	afx_msg void OnSize(UINT nType, int cx, int cy);
 	afx_msg void OnContextMenu(CWnd* pWnd, CPoint point);
-	afx_msg void OnRadio3();
-	afx_msg void OnRadio4();
-	afx_msg void OnRadio5();
-	afx_msg void OnRadio6();
 	//}}AFX_MSG
 	// Notify messages from CCustomTabCtrl
 	afx_msg void OnLButtonClickedTab(NMHDR* pNMHDR, LRESULT* pResult) ;
