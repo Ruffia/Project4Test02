@@ -63,6 +63,9 @@ BOOL CCustomTabCtrlDlg::OnInitDialog()
 
 	m_ctrlTab.SetControlFont(lf, TRUE);
 
+	CRect rcTab;
+	m_ctrlTab.GetClientRect(rcTab);
+
 	CRect r;
 	GetClientRect(r);
 	_Resize(r.Width(),r.Height());
