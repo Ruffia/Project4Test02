@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CustomTabCtrlDlgLeft", "Cus
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CustomTabCtrlDlgBottom", "CustomTabCtrlDlgBottom\CustomTabCtrlDlgBottom.vcxproj", "{1CCF9627-6AF2-48EB-AF44-C0FB51E45F2E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CustomTabCtrlDlgSubWnd", "CustomTabCtrlSubWnd\CustomTabCtrlDlgSubWnd.vcxproj", "{7F848247-0B50-4112-B94D-DAAD071303B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -48,6 +50,12 @@ Global
 		{1CCF9627-6AF2-48EB-AF44-C0FB51E45F2E}.Release|Win32.Build.0 = Release|Win32
 		{1CCF9627-6AF2-48EB-AF44-C0FB51E45F2E}.Template|Win32.ActiveCfg = Release|Win32
 		{1CCF9627-6AF2-48EB-AF44-C0FB51E45F2E}.Template|Win32.Build.0 = Release|Win32
+		{7F848247-0B50-4112-B94D-DAAD071303B5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7F848247-0B50-4112-B94D-DAAD071303B5}.Debug|Win32.Build.0 = Debug|Win32
+		{7F848247-0B50-4112-B94D-DAAD071303B5}.Release|Win32.ActiveCfg = Release|Win32
+		{7F848247-0B50-4112-B94D-DAAD071303B5}.Release|Win32.Build.0 = Release|Win32
+		{7F848247-0B50-4112-B94D-DAAD071303B5}.Template|Win32.ActiveCfg = Release|Win32
+		{7F848247-0B50-4112-B94D-DAAD071303B5}.Template|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
