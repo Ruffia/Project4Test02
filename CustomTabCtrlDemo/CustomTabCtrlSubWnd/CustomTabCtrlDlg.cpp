@@ -80,7 +80,8 @@ void CCustomTabCtrlDlg::_Resize(int cx, int cy)
 {
 	if(!m_ctrlTab.m_hWnd) return;
 
-	int m = 15;
+	int nTabLeft = 15;
+	int nTabTop = 15;
 	int nTabItemHeight = 25;
 
 	int nMarginRight = 0;
@@ -88,51 +89,51 @@ void CCustomTabCtrlDlg::_Resize(int cx, int cy)
 	int nTabPosition[Four] = {0};
 	if(m_ctrlTab.IsVertical() && m_ctrlTab.GetStyle()&CTCS_TOP) // left
 	{
-		nTabPosition[Left] = m;
-		nTabPosition[Top] = m;
+		nTabPosition[Left] = nTabLeft;
+		nTabPosition[Top] = nTabTop;
 		nTabPosition[Width] = nTabItemHeight;
-		nTabPosition[Height] = cy-2*m;	
+		nTabPosition[Height] = cy - 2*nTabTop;	
 
-		nHolderPosition[Left] = m + nTabItemHeight;
-		nHolderPosition[Top] = m;
-		nHolderPosition[Width] = cx - 3*m - nMarginRight - nTabItemHeight;
-		nHolderPosition[Height] = cy - 2*m;
+		nHolderPosition[Left] = nTabLeft + nTabItemHeight;
+		nHolderPosition[Top] = nTabTop;
+		nHolderPosition[Width] = cx - 3*nTabLeft - nMarginRight - nTabItemHeight;
+		nHolderPosition[Height] = cy - 2*nTabTop;
 	}
 	else if(m_ctrlTab.GetStyle()&CTCS_TOP) // top
 	{
-		nTabPosition[Left] = m;
-		nTabPosition[Top] = m;
-		nTabPosition[Width] = cx - 3*m - nMarginRight;
+		nTabPosition[Left] = nTabLeft;
+		nTabPosition[Top] = nTabTop;
+		nTabPosition[Width] = cx - 2*nTabLeft - nMarginRight;
 		nTabPosition[Height] = nTabItemHeight;	
 
-		nHolderPosition[Left] = m;
-		nHolderPosition[Top] = m + nTabItemHeight;
-		nHolderPosition[Width] = cx - 3*m - nMarginRight;
-		nHolderPosition[Height] = cy - nTabItemHeight - 2*m;
+		nHolderPosition[Left] = nTabLeft;
+		nHolderPosition[Top] = nTabTop + nTabItemHeight;
+		nHolderPosition[Width] = cx - 2*nTabLeft - nMarginRight;
+		nHolderPosition[Height] = cy - nTabItemHeight - 2*nTabTop;
 	}
 	else if(m_ctrlTab.IsVertical()) // right
 	{
-		nTabPosition[Left] = m + cx - 3*m - nMarginRight - nTabItemHeight;
-		nTabPosition[Top] = m;
+		nTabPosition[Left] = nTabLeft + cx - 3*nTabLeft - nMarginRight - nTabItemHeight;
+		nTabPosition[Top] = nTabTop;
 		nTabPosition[Width] = nTabItemHeight;
-		nTabPosition[Height] = cy - 2*m;	
+		nTabPosition[Height] = cy - 2*nTabTop;	
 
-		nHolderPosition[Left] = m;
-		nHolderPosition[Top] = m;
-		nHolderPosition[Width] = cx - 3*m - nMarginRight - nTabItemHeight;
-		nHolderPosition[Height] = cy - 2*m;
+		nHolderPosition[Left] = nTabLeft;
+		nHolderPosition[Top] = nTabTop;
+		nHolderPosition[Width] = cx - 3*nTabLeft - nMarginRight - nTabItemHeight;
+		nHolderPosition[Height] = cy - 2*nTabTop;
 	}
 	else // bottom
 	{
-		nTabPosition[Left] = m;
-		nTabPosition[Top] = cy - nTabItemHeight - m;
-		nTabPosition[Width] = cx - 3*m - nMarginRight;
+		nTabPosition[Left] = nTabLeft;
+		nTabPosition[Top] = cy - nTabItemHeight - nTabTop;
+		nTabPosition[Width] = cx - 3*nTabLeft - nMarginRight;
 		nTabPosition[Height] = nTabItemHeight;	
 
-		nHolderPosition[Left] = m;
-		nHolderPosition[Top] = m;
-		nHolderPosition[Width] = cx - 3*m - nMarginRight;
-		nHolderPosition[Height] = cy - nTabItemHeight - 2*m;
+		nHolderPosition[Left] = nTabLeft;
+		nHolderPosition[Top] = nTabTop;
+		nHolderPosition[Width] = cx - 3*nTabLeft - nMarginRight;
+		nHolderPosition[Height] = cy - nTabItemHeight - 2*nTabTop;
 	}
 
 	m_stPlaceHolder.MoveWindow(nHolderPosition[Left],nHolderPosition[Top],nHolderPosition[Width],nHolderPosition[Height]);
