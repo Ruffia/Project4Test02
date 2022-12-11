@@ -52,7 +52,6 @@ BOOL CCustomTabCtrlDlg::OnInitDialog()
 	m_pTab = new CCustomTabCtrl;
 	CRect rcTab(17,27,440,90);
 	m_pTab->Create(WS_CHILD|WS_VISIBLE|CTCS_DRAGMOVE|CTCS_TOP|CTCS_EDITLABELS|CTCS_CLOSEBUTTON|CTCS_AUTOHIDEBUTTONS|CTCS_MULTIHIGHLIGHT|CTCS_DRAGCOPY|CTCS_TOP,rcTab,this,IDC_TAB);
-	m_pTab->ShowWindow(SW_SHOW);
 	m_pTab->SetDragCursors(AfxGetApp()->LoadCursor(IDC_CURSORMOVE),AfxGetApp()->LoadCursor(IDC_CURSORCOPY));
 	m_pTab->InsertItem(0,"SS_BLACKRECT");
 	m_pTab->SetItemData(0,SS_BLACKRECT);
@@ -78,7 +77,7 @@ BOOL CCustomTabCtrlDlg::OnInitDialog()
 void CCustomTabCtrlDlg::OnSize(UINT nType, int cx, int cy) 
 {
 	CDialog::OnSize(nType, cx, cy);
-	//_Resize(cx,cy);
+	_Resize(cx,cy);
 }
 
 void CCustomTabCtrlDlg::_Resize(int cx, int cy)
