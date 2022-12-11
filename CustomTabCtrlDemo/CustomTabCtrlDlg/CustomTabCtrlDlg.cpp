@@ -74,7 +74,6 @@ void CCustomTabCtrlDlg::DoDataExchange(CDataExchange* pDX)
 	CDialog::DoDataExchange(pDX);
 	//{{AFX_DATA_MAP(CCustomTabCtrlDlg)
 	DDX_Control(pDX, IDC_DRAGCOPYCK, m_btnDragcopy);
-	DDX_Control(pDX, IDC_FIXEDCK, m_btnFixed);
 	DDX_Control(pDX, IDC_PAGE_HOLDER, m_stPlaceHolder);
 	DDX_Control(pDX, IDC_TAB, m_ctrlTab);
 	//}}AFX_DATA_MAP
@@ -86,7 +85,6 @@ BEGIN_MESSAGE_MAP(CCustomTabCtrlDlg, CDialog)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_WM_SIZE()
-	ON_BN_CLICKED(IDC_FIXEDCK, OnFixedck)
 	ON_WM_CONTEXTMENU()
 	ON_BN_CLICKED(IDC_DRAGCOPYCK, OnDragcopyck)
 	ON_BN_CLICKED(IDC_RADIO3, OnRadio3)
@@ -134,10 +132,6 @@ BOOL CCustomTabCtrlDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 	
 	// TODO: Add extra initialization here
-	
-	if(m_ctrlTab.GetStyle()&CTCS_FIXEDWIDTH)
-		m_btnFixed.SetCheck(TRUE);	
-
 	if(m_ctrlTab.GetStyle()&CTCS_DRAGCOPY)
 		m_btnDragcopy.SetCheck(TRUE);
 
@@ -226,7 +220,6 @@ void CCustomTabCtrlDlg::_Resize(int cx, int cy)
 	int m = 10;
 	int h = 20;
 	CRect rBn(1114,63,1281,88);
-	m_btnFixed.GetWindowRect(rBn);
 
 	int nHolderPosition[Four] = {0}; 
 	int nTabPosition[Four] = {0};
@@ -282,7 +275,6 @@ void CCustomTabCtrlDlg::_Resize(int cx, int cy)
 	m_stPlaceHolder.MoveWindow(nHolderPosition[Left],nHolderPosition[Top],nHolderPosition[Width],nHolderPosition[Height]);
 	m_ctrlTab.MoveWindow(nTabPosition[Left],nTabPosition[Top],nTabPosition[Width],nTabPosition[Height]);
 
-	m_btnFixed.MoveWindow(cx-m-rBn.Width(),m,rBn.Width(),rBn.Height());
 	m_btnDragcopy.MoveWindow(cx-m-rBn.Width(),5*m,rBn.Width(),rBn.Height());
 	GetDlgItem(IDC_RADIO3)->MoveWindow(cx-m-rBn.Width(),9*m,rBn.Width(),rBn.Height());
 	GetDlgItem(IDC_RADIO4)->MoveWindow(cx-m-rBn.Width(),11*m,rBn.Width(),rBn.Height());
@@ -515,13 +507,6 @@ void CCustomTabCtrlDlg::OnLabelupdateTab(NMHDR* pNMHDR, LRESULT* pResult)
 		*pResult = 0; // Label name OK
 }
 
-void CCustomTabCtrlDlg::OnFixedck() 
-{
-	if(m_btnFixed.GetCheck())
-		m_ctrlTab.ModifyStyle(0,CTCS_FIXEDWIDTH,0);
-	else
-		m_ctrlTab.ModifyStyle(CTCS_FIXEDWIDTH,0,0);
-}
 
 void CCustomTabCtrlDlg::OnDragcopyck() 
 {

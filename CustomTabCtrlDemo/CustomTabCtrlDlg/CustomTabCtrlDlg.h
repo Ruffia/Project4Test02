@@ -23,7 +23,6 @@ public:
 	//{{AFX_DATA(CCustomTabCtrlDlg)
 	enum { IDD = IDD_CUSTOMTABCTRL_DIALOG };
 	CButton	m_btnDragcopy;
-	CButton	m_btnFixed;
 	CStatic	m_stPlaceHolder;
 	CCustomTabCtrl	m_ctrlTab;
 	//}}AFX_DATA
@@ -45,9 +44,6 @@ protected:
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
 	afx_msg void OnSize(UINT nType, int cx, int cy);
-	afx_msg void OnFixedck();
-	afx_msg void OnAutohidebuttonsck();
-	afx_msg void OnMultihighlightck();
 	afx_msg void OnContextMenu(CWnd* pWnd, CPoint point);
 	afx_msg void OnDragcopyck();
 	afx_msg void OnRadio3();
