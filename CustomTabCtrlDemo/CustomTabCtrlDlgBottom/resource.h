@@ -15,10 +15,6 @@
 #define IDC_RTLYCK                      1013
 #define IDC_CLOSEBUTTONSCK2             1014
 #define IDC_TOPCK                       1015
-#define IDC_RADIO3                      1015
-#define IDC_RADIO4                      1016
-#define IDC_RADIO5                      1017
-#define IDC_RADIO6                      1018
 
 // Next default values for new objects
 // 
