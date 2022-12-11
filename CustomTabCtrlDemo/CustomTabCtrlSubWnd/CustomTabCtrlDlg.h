@@ -1,44 +1,20 @@
-// CustomTabCtrlDlg.h : header file
-//
-
-#if !defined(AFX_CUSTOMTABCTRLDLG_H__B07EA255_FBFF_47A2_BFBA_A8E170BD0FCC__INCLUDED_)
-#define AFX_CUSTOMTABCTRLDLG_H__B07EA255_FBFF_47A2_BFBA_A8E170BD0FCC__INCLUDED_
-
-#if _MSC_VER > 1000
 #pragma once
-#endif // _MSC_VER > 1000
-
 #include "..\CustomTabCtrl.h"
-
-/////////////////////////////////////////////////////////////////////////////
-// CCustomTabCtrlDlg dialog
 
 class CCustomTabCtrlDlg : public CDialog
 {
-// Construction
 public:
 	CCustomTabCtrlDlg(CWnd* pParent = NULL);	// standard constructor
 
-// Dialog Data
-	//{{AFX_DATA(CCustomTabCtrlDlg)
 	enum { IDD = IDD_CUSTOMTABCTRL_DIALOG };
 	CStatic	m_stPlaceHolder;
 	CCustomTabCtrl	m_ctrlTab;
-	//}}AFX_DATA
 
-	// ClassWizard generated virtual function overrides
-	//{{AFX_VIRTUAL(CCustomTabCtrlDlg)
-	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV support
-	//}}AFX_VIRTUAL
-
-// Implementation
 protected:
-	// Generated message map functions
-	//{{AFX_MSG(CCustomTabCtrlDlg)
 	virtual BOOL OnInitDialog();
+	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV support
 	afx_msg void OnSize(UINT nType, int cx, int cy);
-	//}}AFX_MSG
+
 	// Notify messages from CCustomTabCtrl
 	afx_msg void OnLButtonClickedTab(NMHDR* pNMHDR, LRESULT* pResult) ;
 	afx_msg void OnRButtonClickedTab(NMHDR* pNMHDR, LRESULT* pResult) ;
@@ -53,8 +29,3 @@ private:
 	void _Resize(int cx, int cy);
 	LPCTSTR GetTooltipText(int nStyle);
 };
-
-//{{AFX_INSERT_LOCATION}}
-// Microsoft Visual C++ will insert additional declarations immediately before the previous line.
-
-#endif // !defined(AFX_CUSTOMTABCTRLDLG_H__B07EA255_FBFF_47A2_BFBA_A8E170BD0FCC__INCLUDED_)

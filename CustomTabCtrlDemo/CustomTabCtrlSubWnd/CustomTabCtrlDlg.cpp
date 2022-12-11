@@ -8,8 +8,7 @@
 static char THIS_FILE[] = __FILE__;
 #endif
 
-/////////////////////////////////////////////////////////////////////////////
-// CCustomTabCtrlDlg dialog
+
 CCustomTabCtrlDlg::CCustomTabCtrlDlg(CWnd* pParent /*=NULL*/)
 	: CDialog(CCustomTabCtrlDlg::IDD, pParent)
 {
@@ -67,7 +66,7 @@ BOOL CCustomTabCtrlDlg::OnInitDialog()
 	CRect r;
 	GetClientRect(r);
 	_Resize(r.Width(),r.Height());
-	return TRUE;  // return TRUE  unless you set the focus to a control
+	return TRUE; 
 }
 
 
