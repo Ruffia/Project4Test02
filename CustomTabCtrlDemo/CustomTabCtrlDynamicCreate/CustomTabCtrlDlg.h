@@ -5,10 +5,11 @@ class CCustomTabCtrlDlg : public CDialog
 {
 public:
 	CCustomTabCtrlDlg(CWnd* pParent = NULL);
+	~CCustomTabCtrlDlg();
 
 	enum { IDD = IDD_CUSTOMTABCTRL_DIALOG };
 	CStatic	m_stPlaceHolder;
-	CCustomTabCtrl	m_ctrlTab;
+	CCustomTabCtrl*	m_pTab;
 
 protected:
 	virtual BOOL OnInitDialog();

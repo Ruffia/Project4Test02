@@ -89,7 +89,6 @@ CAPTION "CustomTabCtrl"
 FONT 8, "MS Sans Serif", 0, 0, 0x1
 BEGIN
     CONTROL         "",IDC_PAGE_HOLDER,"Static",SS_WHITERECT | SS_SUNKEN,7,7,474,191
-    CONTROL         "",IDC_TAB,"CCustomTabCtrl",0x0,7,217,188,29
 END
 
 
