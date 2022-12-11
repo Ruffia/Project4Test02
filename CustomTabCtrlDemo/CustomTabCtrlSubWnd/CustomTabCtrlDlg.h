@@ -4,7 +4,7 @@
 class CCustomTabCtrlDlg : public CDialog
 {
 public:
-	CCustomTabCtrlDlg(CWnd* pParent = NULL);	// standard constructor
+	CCustomTabCtrlDlg(CWnd* pParent = NULL);
 
 	enum { IDD = IDD_CUSTOMTABCTRL_DIALOG };
 	CStatic	m_stPlaceHolder;
@@ -12,7 +12,7 @@ public:
 
 protected:
 	virtual BOOL OnInitDialog();
-	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV support
+	virtual void DoDataExchange(CDataExchange* pDX);
 	afx_msg void OnSize(UINT nType, int cx, int cy);
 
 	// Notify messages from CCustomTabCtrl
