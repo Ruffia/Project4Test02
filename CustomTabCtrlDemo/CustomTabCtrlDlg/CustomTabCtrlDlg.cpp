@@ -73,7 +73,6 @@ void CCustomTabCtrlDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
 	//{{AFX_DATA_MAP(CCustomTabCtrlDlg)
-	DDX_Control(pDX, IDC_DRAGCOPYCK, m_btnDragcopy);
 	DDX_Control(pDX, IDC_PAGE_HOLDER, m_stPlaceHolder);
 	DDX_Control(pDX, IDC_TAB, m_ctrlTab);
 	//}}AFX_DATA_MAP
@@ -86,7 +85,6 @@ BEGIN_MESSAGE_MAP(CCustomTabCtrlDlg, CDialog)
 	ON_WM_QUERYDRAGICON()
 	ON_WM_SIZE()
 	ON_WM_CONTEXTMENU()
-	ON_BN_CLICKED(IDC_DRAGCOPYCK, OnDragcopyck)
 	ON_BN_CLICKED(IDC_RADIO3, OnRadio3)
 	ON_BN_CLICKED(IDC_RADIO4, OnRadio4)
 	ON_BN_CLICKED(IDC_RADIO5, OnRadio5)
@@ -131,10 +129,6 @@ BOOL CCustomTabCtrlDlg::OnInitDialog()
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 	
-	// TODO: Add extra initialization here
-	if(m_ctrlTab.GetStyle()&CTCS_DRAGCOPY)
-		m_btnDragcopy.SetCheck(TRUE);
-
 	m_ctrlTab.SetDragCursors(AfxGetApp()->LoadCursor(IDC_CURSORMOVE),AfxGetApp()->LoadCursor(IDC_CURSORCOPY));
 	m_ctrlTab.InsertItem(0,"SS_BLACKRECT");
 	m_ctrlTab.SetItemData(0,SS_BLACKRECT);
@@ -149,6 +143,7 @@ BOOL CCustomTabCtrlDlg::OnInitDialog()
 	m_ctrlTab.ModifyStyle(0,CTCS_DRAGMOVE,0);
 	m_ctrlTab.ModifyStyle(0,CTCS_CLOSEBUTTON,0);
 	m_ctrlTab.ModifyStyle(0,CTCS_MULTIHIGHLIGHT,0);
+	m_ctrlTab.ModifyStyle(0,CTCS_DRAGCOPY,0);
 
 	LOGFONT lf = {15, 0, 0, 0, FW_NORMAL, 0, 0, 0,
 		DEFAULT_CHARSET, OUT_CHARACTER_PRECIS, CLIP_CHARACTER_PRECIS,
@@ -275,7 +270,6 @@ void CCustomTabCtrlDlg::_Resize(int cx, int cy)
 	m_stPlaceHolder.MoveWindow(nHolderPosition[Left],nHolderPosition[Top],nHolderPosition[Width],nHolderPosition[Height]);
 	m_ctrlTab.MoveWindow(nTabPosition[Left],nTabPosition[Top],nTabPosition[Width],nTabPosition[Height]);
 
-	m_btnDragcopy.MoveWindow(cx-m-rBn.Width(),5*m,rBn.Width(),rBn.Height());
 	GetDlgItem(IDC_RADIO3)->MoveWindow(cx-m-rBn.Width(),9*m,rBn.Width(),rBn.Height());
 	GetDlgItem(IDC_RADIO4)->MoveWindow(cx-m-rBn.Width(),11*m,rBn.Width(),rBn.Height());
 	GetDlgItem(IDC_RADIO5)->MoveWindow(cx-m-rBn.Width(),13*m,rBn.Width(),rBn.Height());
@@ -507,14 +501,6 @@ void CCustomTabCtrlDlg::OnLabelupdateTab(NMHDR* pNMHDR, LRESULT* pResult)
 		*pResult = 0; // Label name OK
 }
 
-
-void CCustomTabCtrlDlg::OnDragcopyck() 
-{
-	if(m_btnDragcopy.GetCheck())
-		m_ctrlTab.ModifyStyle(0,CTCS_DRAGCOPY,0);
-	else
-		m_ctrlTab.ModifyStyle(CTCS_DRAGCOPY,0,0);		
-}
 
 void CCustomTabCtrlDlg::OnContextMenu(CWnd* /*pWnd*/, CPoint /*point*/) 
 {
