@@ -55,7 +55,7 @@ BOOL CCustomTabCtrlDlg::OnInitDialog()
 	m_ctrlTab.ModifyStyle(0,CTCS_CLOSEBUTTON,0);
 	m_ctrlTab.ModifyStyle(0,CTCS_MULTIHIGHLIGHT,0);
 	m_ctrlTab.ModifyStyle(0,CTCS_DRAGCOPY,0);
-	m_ctrlTab.ModifyStyle(CTCS_RIGHT,CTCS_TOP,0);
+	m_ctrlTab.ModifyStyle(0,CTCS_TOP,0);
 
 	LOGFONT lf = {15, 0, 0, 0, FW_NORMAL, 0, 0, 0,
 		DEFAULT_CHARSET, OUT_CHARACTER_PRECIS, CLIP_CHARACTER_PRECIS,
