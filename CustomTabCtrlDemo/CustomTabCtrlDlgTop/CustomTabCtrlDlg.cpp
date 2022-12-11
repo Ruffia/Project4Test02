@@ -209,8 +209,8 @@ void CCustomTabCtrlDlg::_Resize(int cx, int cy)
 {
 	if(!m_ctrlTab.m_hWnd) return;
 
-	int m = 10;
-	int h = 20;
+	int m = 15;
+	int h = 25;
 	CRect rBn(1114,63,1281,88);
 
 	int nHolderPosition[Four] = {0}; 
