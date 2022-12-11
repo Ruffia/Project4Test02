@@ -84,10 +84,8 @@ void CCustomTabCtrlDlg::_Resize(int cx, int cy)
 	int nTabTop = 5;
 	int nTabItemHeight = 25;
 
-	int nMarginWidth = 0;
-	int nMarginHeight = 0;
-	nMarginWidth = 20;
-	nMarginHeight = nTabItemHeight + 10; 
+	int nMarginWidth = 20;
+	int nMarginHeight = 36;
 
 	int nHolderPosition[Four] = {0}; 
 	int nTabPosition[Four] = {0};
