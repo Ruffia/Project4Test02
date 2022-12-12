@@ -1,6 +1,9 @@
 #include "stdafx.h"
 #include "CustomTabCtrlDlgDynamicCreateApp.h"
 #include "CustomTabCtrlDlg.h"
+#include "DlgSEMLog_OperationQueryKeyWordSettings.h"
+#include "DlgSEMLog_GridHeaderSettings.h"
+#include "DlgSEMLog_PageB.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -10,9 +13,8 @@ static char THIS_FILE[] = __FILE__;
 
 
 CCustomTabCtrlDlg::CCustomTabCtrlDlg(CWnd* pParent /*=NULL*/)
-	: CDialog(CCustomTabCtrlDlg::IDD, pParent)
+	: CDialog(CCustomTabCtrlDlg::IDD, pParent),m_pTab(NULL),m_nCurSel(0)
 {
-	m_pTab = NULL;
 }
 
 CCustomTabCtrlDlg::~CCustomTabCtrlDlg()
@@ -22,12 +24,20 @@ CCustomTabCtrlDlg::~CCustomTabCtrlDlg()
 		delete m_pTab;
 		m_pTab = NULL;
 	}
+
+	for (int i = 0; i < m_vPage.size();i++)
+	{
+		CDialog* pDlg = m_vPage[i];
+		delete pDlg;
+		pDlg = NULL;
+	}
+
+	m_vPage.clear();
 }
 
 void CCustomTabCtrlDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
-	DDX_Control(pDX, IDC_PAGE_HOLDER, m_stPlaceHolder);
 }
 
 BEGIN_MESSAGE_MAP(CCustomTabCtrlDlg, CDialog)
@@ -49,6 +59,9 @@ BOOL CCustomTabCtrlDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
+	CRect rcClient;
+	GetClientRect(rcClient);
+
 	m_pTab = new CCustomTabCtrl;
 	CRect rcTab(17,27,440,90);
 	m_pTab->Create(WS_CHILD|WS_VISIBLE|CTCS_DRAGMOVE|CTCS_TOP|CTCS_EDITLABELS|CTCS_CLOSEBUTTON|CTCS_AUTOHIDEBUTTONS|CTCS_MULTIHIGHLIGHT|CTCS_DRAGCOPY|CTCS_TOP,rcTab,this,IDC_TAB);
@@ -60,6 +73,22 @@ BOOL CCustomTabCtrlDlg::OnInitDialog()
 	m_pTab->InsertItem(2,"SS_WHITERECT");
 	m_pTab->SetItemData(2,SS_WHITERECT);
 	m_pTab->SetCurSel(0);
+
+	CDlgSEMLog_OperationQueryKeyWordSettings* pDlgOperationKeyWord = new CDlgSEMLog_OperationQueryKeyWordSettings;
+	pDlgOperationKeyWord->Create(CDlgSEMLog_OperationQueryKeyWordSettings::IDD, this);
+	m_vPage.push_back(pDlgOperationKeyWord);
+
+	CDlgSEMLog_GridHeaderSettings* pDlgGridHeader = new CDlgSEMLog_GridHeaderSettings;
+	pDlgGridHeader->Create(CDlgSEMLog_GridHeaderSettings::IDD, this);
+	m_vPage.push_back(pDlgGridHeader);
+
+	CDlgSEMLog_PageB* pDlgGridHeader2 = new CDlgSEMLog_PageB;
+	pDlgGridHeader2->Create(CDlgSEMLog_PageB::IDD, this);
+	m_vPage.push_back(pDlgGridHeader2);
+
+	m_nCurSel = 0;
+	//ÏÔÊ¾³õÊ¼Ò³Ãæ
+	_ShowPage(m_nCurSel);
 	
 	LOGFONT lf = {15, 0, 0, 0, FW_NORMAL, 0, 0, 0,
 		DEFAULT_CHARSET, OUT_CHARACTER_PRECIS, CLIP_CHARACTER_PRECIS,
@@ -67,9 +96,7 @@ BOOL CCustomTabCtrlDlg::OnInitDialog()
 
 	m_pTab->SetControlFont(lf, TRUE);
 
-	CRect r;
-	GetClientRect(r);
-	_Resize(r.Width(),r.Height());
+	_Resize(rcClient.Width(),rcClient.Height());
 	return TRUE; 
 }
 
@@ -105,7 +132,12 @@ void CCustomTabCtrlDlg::_Resize(int cx, int cy)
 	nHolderPosition[Width] = cx - nMarginWidth;
 	nHolderPosition[Height] = cy - nMarginHeight;
 
-	m_stPlaceHolder.MoveWindow(nHolderPosition[Left],nHolderPosition[Top],nHolderPosition[Width],nHolderPosition[Height]);
+	for (int i = 0; i < m_vPage.size();i++)
+	{
+		CDialog* pPage = m_vPage[i];
+		pPage->MoveWindow(nHolderPosition[Left],nHolderPosition[Top],nHolderPosition[Width],nHolderPosition[Height]);
+	}
+
 	m_pTab->MoveWindow(nTabPosition[Left],nTabPosition[Top],nTabPosition[Width],nTabPosition[Height]);
 	RedrawWindow(NULL,NULL,RDW_ALLCHILDREN|RDW_ERASE|RDW_INVALIDATE);
 
@@ -125,8 +157,8 @@ void CCustomTabCtrlDlg::OnSelchangeTab(NMHDR* pNMHDR, LRESULT* pResult)
 				((CTC_NMHDR*)pNMHDR)->rItem.bottom,
 				((CTC_NMHDR*)pNMHDR)->fSelected,
 				((CTC_NMHDR*)pNMHDR)->fHighlighted);
-	m_stPlaceHolder.ModifyStyle(SS_BLACKRECT|SS_GRAYRECT|SS_WHITERECT,((CTC_NMHDR*)pNMHDR)->lParam);
-	m_stPlaceHolder.Invalidate();
+	m_nCurSel = ((CTC_NMHDR*)pNMHDR)->nItem;
+	_ShowPage(m_nCurSel);
 	*pResult = 0;
 }
 
@@ -350,4 +382,21 @@ LPCTSTR CCustomTabCtrlDlg::GetTooltipText(int nStyle)
 		return s[2];
 	}
 	return NULL;
+}
+
+void CCustomTabCtrlDlg::_ShowPage(const int nCurPage)
+{
+	for (int i = 0; i < m_vPage.size();i++)
+	{
+		CDialog* pPage = m_vPage[i];
+		if (!pPage) continue;
+		if (nCurPage == i)
+		{
+			pPage->ShowWindow(SW_SHOW);
+		}
+		else
+		{
+			pPage->ShowWindow(SW_HIDE);
+		}
+	}
 }

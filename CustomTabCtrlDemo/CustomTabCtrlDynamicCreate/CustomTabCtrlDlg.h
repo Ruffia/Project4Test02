@@ -1,4 +1,6 @@
 #pragma once
+#include <vector>
+using namespace std;
 #include "..\CustomTabCtrl.h"
 
 class CCustomTabCtrlDlg : public CDialog
@@ -8,8 +10,9 @@ public:
 	~CCustomTabCtrlDlg();
 
 	enum { IDD = IDD_CUSTOMTABCTRL_DIALOG };
-	CStatic	m_stPlaceHolder;
 	CCustomTabCtrl*	m_pTab;
+	int m_nCurSel;
+	vector<CDialog*> m_vPage; 
 
 protected:
 	virtual BOOL OnInitDialog();
@@ -28,5 +31,6 @@ protected:
 
 private:
 	void _Resize(int cx, int cy);
+	void _ShowPage(const int nCurPage);
 	LPCTSTR GetTooltipText(int nStyle);
 };
