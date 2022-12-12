@@ -17,6 +17,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CustomTabCtrlDlgDynamicCrea
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CustomTabCtrlDlgDynamicCreateChildWnd", "CustomTabCtrlDynamicCreateChildWnd\CustomTabCtrlDlgDynamicCreateChildWnd.vcxproj", "{8A37FA1C-FF80-4027-AA8B-83260A65A89A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CustomTabCtrlDlgDynamicCreateCrossTab", "CustomTabCtrlDynamicCreateCrossTab\CustomTabCtrlDlgDynamicCreateCrossTab.vcxproj", "{3CAA0CF9-5676-4E94-8CED-32894F9C3EBD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -72,6 +74,12 @@ Global
 		{8A37FA1C-FF80-4027-AA8B-83260A65A89A}.Release|Win32.Build.0 = Release|Win32
 		{8A37FA1C-FF80-4027-AA8B-83260A65A89A}.Template|Win32.ActiveCfg = Release|Win32
 		{8A37FA1C-FF80-4027-AA8B-83260A65A89A}.Template|Win32.Build.0 = Release|Win32
+		{3CAA0CF9-5676-4E94-8CED-32894F9C3EBD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3CAA0CF9-5676-4E94-8CED-32894F9C3EBD}.Debug|Win32.Build.0 = Debug|Win32
+		{3CAA0CF9-5676-4E94-8CED-32894F9C3EBD}.Release|Win32.ActiveCfg = Release|Win32
+		{3CAA0CF9-5676-4E94-8CED-32894F9C3EBD}.Release|Win32.Build.0 = Release|Win32
+		{3CAA0CF9-5676-4E94-8CED-32894F9C3EBD}.Template|Win32.ActiveCfg = Release|Win32
+		{3CAA0CF9-5676-4E94-8CED-32894F9C3EBD}.Template|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
