@@ -63,7 +63,7 @@ BOOL CCustomTabCtrlDlg::OnInitDialog()
 	GetClientRect(rcClient);
 
 	m_pTab = new CCustomTabCtrl;
-	CRect rcTab(17,27,440,90);
+	CRect rcTab(rcClient.left + 17,rcClient.top + 27,rcClient.Width() - 20,rcClient.Height() - 20);
 	m_pTab->Create(WS_CHILD|WS_VISIBLE|CTCS_DRAGMOVE|CTCS_TOP|CTCS_EDITLABELS|CTCS_CLOSEBUTTON|CTCS_AUTOHIDEBUTTONS|CTCS_MULTIHIGHLIGHT|CTCS_DRAGCOPY|CTCS_TOP,rcTab,this,IDC_TAB);
 	m_pTab->SetDragCursors(AfxGetApp()->LoadCursor(IDC_CURSORMOVE),AfxGetApp()->LoadCursor(IDC_CURSORCOPY));
 	m_pTab->InsertItem(0,"SS_BLACKRECT");

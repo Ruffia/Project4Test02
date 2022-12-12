@@ -3,6 +3,8 @@
 using namespace std;
 #include "..\CustomTabCtrl.h"
 
+class CCustomTabCtrlDlg;
+
 class CMainDlg : public CDialog
 {
 public:
@@ -18,4 +20,5 @@ protected:
 
 private:
 	void _Resize(int cx, int cy);
+	CCustomTabCtrlDlg* m_pTabWnd;
 };
