@@ -137,6 +137,7 @@
     <ClCompile Include="DlgSEMLog_GridHeaderSettings.cpp" />
     <ClCompile Include="DlgSEMLog_OperationQueryKeyWordSettings.cpp" />
     <ClCompile Include="DlgSEMLog_PageB.cpp" />
+    <ClCompile Include="MainDlg.cpp" />
     <ClCompile Include="StdAfx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">stdafx.h</PrecompiledHeaderFile>
@@ -155,6 +156,7 @@
     <ClInclude Include="DlgSEMLog_GridHeaderSettings.h" />
     <ClInclude Include="DlgSEMLog_OperationQueryKeyWordSettings.h" />
     <ClInclude Include="DlgSEMLog_PageB.h" />
+    <ClInclude Include="MainDlg.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="StdAfx.h" />
     <ClInclude Include="..\ThemeUtil.h" />

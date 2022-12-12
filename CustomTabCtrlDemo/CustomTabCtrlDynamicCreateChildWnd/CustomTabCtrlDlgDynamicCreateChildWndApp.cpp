@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 #include "CustomTabCtrlDlgDynamicCreateChildWndApp.h"
-#include "CustomTabCtrlDlg.h"
+#include "MainDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -51,7 +51,7 @@ BOOL CCustomTabCtrlApp::InitInstance()
 	Enable3dControlsStatic();	// Call this when linking to MFC statically
 #endif
 
-	CCustomTabCtrlDlg dlg;
+	CMainDlg dlg;
 	m_pMainWnd = &dlg;
 	int nResponse = dlg.DoModal();
 	if (nResponse == IDOK)

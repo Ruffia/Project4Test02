@@ -15,10 +15,14 @@
 #define IDC_RTLYCK                      1013
 #define IDC_CLOSEBUTTONSCK2             1014
 #define IDC_TOPCK                       1015
+#define IDC_STATIC_LEFT                 1015
+#define IDC_STATIC_TOP                  1016
+#define IDC_STATIC_TAB                  1017
 #define IDC_EDIT1                       1021
 #define IDD_DLG_Grid                    31410
 #define IDD_DLG_SEMLog_OperationKeyWord 31411
 #define IDD_DLG_PageB                   31412
+#define IDD_DIALOG_MAIN                 31413
 
 // Next default values for new objects
 // 
