@@ -30,6 +30,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 
 private:
+	void _CreateTabCtrl();
 	void _Resize(int cx, int cy);
 	void _ShowPage(const int nCurPage);
 	LPCTSTR GetTooltipText(int nStyle);
