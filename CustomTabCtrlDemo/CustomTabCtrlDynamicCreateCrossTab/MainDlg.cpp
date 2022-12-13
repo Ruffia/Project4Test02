@@ -3,6 +3,7 @@
 #include "MainDlg.h"
 #include "CustomTabCtrlLeftDlg.h"
 #include "CustomTabCtrlTopDlg.h"
+#include "CustomTabCtrlLeftTopDlg.h"
 
 CMainDlg::CMainDlg(CWnd* pParent /*=NULL*/)
 	: CDialog(CMainDlg::IDD, pParent),m_pTabWnd(NULL)
@@ -39,7 +40,7 @@ BOOL CMainDlg::OnInitDialog()
 
 	CWnd* pTabWnd = GetDlgItem(IDC_STATIC_TAB);
 
-	m_pTabWnd = new CCustomTabCtrlTopDlg;
+	m_pTabWnd = new CCustomTabCtrlLeftTopDlg;
 	m_pTabWnd->Create(CCustomTabCtrlDlg::IDD,pTabWnd);
 
 	_Resize(rcClient.Width(),rcClient.Height());

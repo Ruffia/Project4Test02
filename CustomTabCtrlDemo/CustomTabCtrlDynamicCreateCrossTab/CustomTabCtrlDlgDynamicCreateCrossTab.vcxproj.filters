@@ -48,6 +48,9 @@
     <ClCompile Include="CustomTabCtrlTopDlg.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CustomTabCtrlLeftTopDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="CustomTabCtrlDlg.rc">
@@ -89,6 +92,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CustomTabCtrlTopDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomTabCtrlLeftTopDlg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

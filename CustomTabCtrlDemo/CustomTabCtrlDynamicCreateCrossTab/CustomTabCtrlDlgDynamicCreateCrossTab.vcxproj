@@ -135,6 +135,7 @@
     <ClCompile Include="CustomTabCtrlDlgDynamicCreateCrossTabApp.cpp" />
     <ClCompile Include="CustomTabCtrlDlg.cpp" />
     <ClCompile Include="CustomTabCtrlLeftDlg.cpp" />
+    <ClCompile Include="CustomTabCtrlLeftTopDlg.cpp" />
     <ClCompile Include="CustomTabCtrlTopDlg.cpp" />
     <ClCompile Include="DlgSEMLog_GridHeaderSettings.cpp" />
     <ClCompile Include="DlgSEMLog_OperationQueryKeyWordSettings.cpp" />
@@ -156,6 +157,7 @@
     <ClInclude Include="CustomTabCtrlDlgDynamicCreateCrossTabApp.h" />
     <ClInclude Include="CustomTabCtrlDlg.h" />
     <ClInclude Include="CustomTabCtrlLeftDlg.h" />
+    <ClInclude Include="CustomTabCtrlLeftTopDlg.h" />
     <ClInclude Include="CustomTabCtrlTopDlg.h" />
     <ClInclude Include="DlgSEMLog_GridHeaderSettings.h" />
     <ClInclude Include="DlgSEMLog_OperationQueryKeyWordSettings.h" />
