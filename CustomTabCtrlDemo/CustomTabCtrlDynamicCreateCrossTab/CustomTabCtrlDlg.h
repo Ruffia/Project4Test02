@@ -29,9 +29,9 @@ protected:
 	afx_msg void OnLabelupdateTab(NMHDR* pNMHDR, LRESULT* pResult) ;
 	DECLARE_MESSAGE_MAP()
 
-private:
-	virtual void _CreateTabCtrl();
-	virtual void _Resize(int cx, int cy);
+protected:
+	virtual void _CreateTabCtrl() = 0;
+	virtual void _Resize(int cx, int cy) = 0;
 	void _ShowPage(const int nCurPage);
 	LPCTSTR GetTooltipText(int nStyle);
 };

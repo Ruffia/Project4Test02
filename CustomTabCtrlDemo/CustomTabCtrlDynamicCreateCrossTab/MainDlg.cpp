@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "CustomTabCtrlDlgDynamicCreateCrossTabApp.h"
 #include "MainDlg.h"
-#include "CustomTabCtrlDlg.h"
+#include "CustomTabCtrlLeftDlg.h"
 
 CMainDlg::CMainDlg(CWnd* pParent /*=NULL*/)
 	: CDialog(CMainDlg::IDD, pParent),m_pTabWnd(NULL)
@@ -38,7 +38,7 @@ BOOL CMainDlg::OnInitDialog()
 
 	CWnd* pTabWnd = GetDlgItem(IDC_STATIC_TAB);
 
-	m_pTabWnd = new CCustomTabCtrlDlg;
+	m_pTabWnd = new CCustomTabCtrlLeftDlg;
 	m_pTabWnd->Create(CCustomTabCtrlDlg::IDD,pTabWnd);
 
 	_Resize(rcClient.Width(),rcClient.Height());
