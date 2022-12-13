@@ -15,15 +15,22 @@ CCustomTabCtrlLeftTopDlg::CCustomTabCtrlLeftTopDlg(CWnd* pParent)
 {
 }
 
-void CCustomTabCtrlLeftTopDlg::_CreateTabCtrl()
-{
-	CRect rcClient;
-	GetClientRect(rcClient);
 
+void CCustomTabCtrlLeftTopDlg::_CreateTabCtrl(const CRect& rcClient)
+{
 	m_pTab = new CCustomTabCtrl;
 	CRect rcTab(rcClient.left + 17,rcClient.top + 27,rcClient.Width() - 20,rcClient.Height() - 20);
 	m_pTab->Create(WS_CHILD|WS_VISIBLE|CTCS_DRAGMOVE|CTCS_TOP|CTCS_EDITLABELS|CTCS_CLOSEBUTTON|CTCS_AUTOHIDEBUTTONS|CTCS_MULTIHIGHLIGHT|CTCS_DRAGCOPY|CTCS_LEFT,rcTab,this,IDC_TAB);
 	m_pTab->SetDragCursors(AfxGetApp()->LoadCursor(IDC_CURSORMOVE),AfxGetApp()->LoadCursor(IDC_CURSORCOPY));
+	LOGFONT lf = {15, 0, 0, 0, FW_NORMAL, 0, 0, 0,
+		DEFAULT_CHARSET, OUT_CHARACTER_PRECIS, CLIP_CHARACTER_PRECIS,
+		DEFAULT_QUALITY, DEFAULT_PITCH | FF_DONTCARE, "Courier"};
+	m_pTab->SetControlFont(lf, TRUE);
+}
+
+
+void CCustomTabCtrlLeftTopDlg::_AddPage()
+{
 	m_pTab->InsertItem(0,"SS_BLACKRECT");
 	m_pTab->SetItemData(0,SS_BLACKRECT);
 	m_pTab->InsertItem(1,"SS_GRAY");
@@ -47,14 +54,6 @@ void CCustomTabCtrlLeftTopDlg::_CreateTabCtrl()
 	m_nCurSel = 0;
 	//ÏÔÊ¾³õÊ¼Ò³Ãæ
 	_ShowPage(m_nCurSel);
-
-	LOGFONT lf = {15, 0, 0, 0, FW_NORMAL, 0, 0, 0,
-		DEFAULT_CHARSET, OUT_CHARACTER_PRECIS, CLIP_CHARACTER_PRECIS,
-		DEFAULT_QUALITY, DEFAULT_PITCH | FF_DONTCARE, "Courier"};
-
-	m_pTab->SetControlFont(lf, TRUE);
-
-	_Resize(rcClient.Width(),rcClient.Height());
 }
 
 

@@ -30,7 +30,9 @@ protected:
 	DECLARE_MESSAGE_MAP()
 
 protected:
-	virtual void _CreateTabCtrl() = 0;
+	virtual void _InitTabCtrl();
+	virtual void _CreateTabCtrl(const CRect& rc) = 0;
+	virtual void _AddPage() = 0;
 	virtual void _Resize(int cx, int cy) = 0;
 	void _ShowPage(const int nCurPage);
 	LPCTSTR GetTooltipText(int nStyle);
